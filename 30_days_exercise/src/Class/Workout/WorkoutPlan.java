@@ -54,7 +54,7 @@ public class WorkoutPlan implements WorkoutQueue {
         return exerciseList.size();
     }
 
-        public int getSelectedDay() {
+    public int getSelectedDay() {
         return selectedDay;
     }
     public void setSelectedDay(int selectedDay) {
