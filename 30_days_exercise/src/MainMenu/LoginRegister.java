@@ -1,11 +1,17 @@
 package MainMenu;
 import java.util.*;
 public class LoginRegister {
-    public void Login(Scanner scan){
+    private Scanner scan;
+
+    public LoginRegister () {
+        scan = new Scanner(System.in);
+    }
+
+    public void login(){
 
     }
 
-    public void Register(Scanner scan){
+    public void register(){
         
     }
 }
