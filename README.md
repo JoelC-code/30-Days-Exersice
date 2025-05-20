@@ -13,4 +13,4 @@ Using interface for it.
 3. Calender (int day, int week, month) 
 [pakai library java.util.Calendar and java.text.import java.text.DateFormatSymbols]
 
-4. Exercise (int ID, String name, int calorieTotal, int repExercise, int setExercise, ArrayList<String> areaBadan, checkIntensity())
+4. Exercise (int ID, String name, int calorieTotal, int repExercise, int setExercise, `ArrayList<String> areaBadan`, checkIntensity())
