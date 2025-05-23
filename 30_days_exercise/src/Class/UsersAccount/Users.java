@@ -15,8 +15,9 @@ public class Users extends Account{
         this.weight = weight;
         this.haveOccupation = haveOccupation;
         this.firstLogin = firstLogin;
+        this.roleName = "User";
     }
-    public Users(String username, String password){
+    public Users(String username, String password, String roleName){
         super(username, password);
         this.age = 0;
         this.gender = "Non-Binary";
@@ -24,6 +25,7 @@ public class Users extends Account{
         this.weight = 0;
         this.haveOccupation = false;
         this.firstLogin = true;
+        this.roleName = roleName;
     }
     public void setAge(int age) {
         this.age = age;
