@@ -1,8 +1,9 @@
-package Class.Account;
+package Class.UsersAccount;
 
-public class Account {
+public abstract class Account {
     private String username, password;
     private int ID;
+    // Agar bisa nambah tanpa membuat element baru, diberi static
     private static int amount = 1;
     public Account (String username, String password){
         this.username = username;
@@ -26,5 +27,8 @@ public class Account {
     public String getPassword() {
         return password;
     }
+
+    public abstract void setRoleName(String roleName);
+    public abstract String getRoleName();
 }
 
