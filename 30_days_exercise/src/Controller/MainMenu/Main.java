@@ -1,4 +1,4 @@
-package MainMenu;
+package Controller.MainMenu;
 import java.util.*;
 
 public class Main {

@@ -1,4 +1,4 @@
-package MainMenu;
+package Controller.MainMenu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -123,5 +123,9 @@ public class LoginRegister {
             }
         }
         return null;
+    }
+
+    public ArrayList<Account> getListAccount() {
+        return listUser;
     }
 }
