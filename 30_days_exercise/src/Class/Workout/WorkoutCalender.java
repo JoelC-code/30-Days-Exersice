@@ -5,7 +5,7 @@ import Class.Calender.*;
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 
-public class WorkooutCalender extends CalenderBase{
+public class WorkoutCalender extends CalenderBase{
     
     @Override
     public void setDate(Calendar calender) {
