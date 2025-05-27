@@ -1,17 +1,20 @@
-package Class.Exercise;
+package Class.ExerciseMove;
 
 public class Exercise {
-    private int ID, calorieTotal, repExercise, setExercise, secondsExercise;
-    private String name;
+    private int ID, repExercise, setExercise, secondsExercise;
+    private double calorieTotal;
+    private String name, intensityCategory, Description;
     private static int amount = 1;
 
-    public Exercise(String name, int calorieTotal, int repExercise, int setExercise, int secondsExercise){
+    public Exercise(String name, double calorieTotal, int repExercise, int setExercise, int secondsExercise, String intensityCategory, String Description){
         this.name = name;
         this.calorieTotal = calorieTotal;
         this.repExercise = repExercise;
         this.setExercise = setExercise;
         this.ID = amount++;
         this.secondsExercise = secondsExercise;
+        this.intensityCategory = intensityCategory;
+        this.Description = Description;
     }
 
     public int getID(){
@@ -22,10 +25,10 @@ public class Exercise {
         return name;
     }
 
-    public void setCalorieTotal(int calorieTotal) {
+    public void setCalorieTotal(double calorieTotal) {
         this.calorieTotal = calorieTotal;
     }
-    public int getCalorieTotal(){
+    public double getCalorieTotal(){
         return calorieTotal;
     }
 
@@ -50,4 +53,17 @@ public class Exercise {
         this.secondsExercise = secondsExercise;
     }
 
+    public String getIntensityCategory() {
+        return intensityCategory;
+    }
+    public void setIntensityCategory(String intensityCategory) {
+        this.intensityCategory = intensityCategory;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+    public void setDescription(String description) {
+        Description = description;
+    }
 }

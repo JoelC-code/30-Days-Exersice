@@ -2,7 +2,7 @@ package Class.Workout;
 
 import java.util.LinkedList;
 
-import Class.Exercise.Exercise;
+import Class.ExerciseMove.Exercise;
 
 public class WorkoutPlan implements WorkoutQueue {
     private LinkedList<Exercise> exerciseList = new LinkedList<>();
@@ -21,7 +21,7 @@ public class WorkoutPlan implements WorkoutQueue {
         if(newWorkout instanceof Exercise) {
             exerciseList.add(newWorkout);
         } else {
-            throw new IllegalArgumentException("Something went wrong when you want to add a workout (Err:WP-1)");
+            throw new IllegalArgumentException("Something went wrong when you want to add a workout, call Customer Service (Err:WP-1)");
         }
     }
 

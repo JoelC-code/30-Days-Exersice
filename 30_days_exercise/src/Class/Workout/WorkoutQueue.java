@@ -1,6 +1,6 @@
 package Class.Workout;
 
-import Class.Exercise.*;
+import Class.ExerciseMove.*;
 
 public interface WorkoutQueue {
     public void addWorkout(Exercise e);
