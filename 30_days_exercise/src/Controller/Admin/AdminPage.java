@@ -19,7 +19,7 @@ public class AdminPage {
     public void mainMenu() {
         int selectedMenu = 0;
         boolean isValid = false;
-        System.out.println("Login is done, welcome admin "+logAdmin.getUsername());
+        System.out.println("Login is done, Welcome "+logAdmin.getUsername());
         System.out.println("Menu:");
         System.out.println("1. Add Exercise");
         System.out.println("2. Update Exercise");
