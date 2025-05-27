@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import Class.ExerciseMove.Exercise;
 import Class.UsersAccount.Account;
-import Class.UsersAccount.Admin;
 
 public class AdminSystem {
     private ArrayList<Account> listUserAccount;
@@ -99,6 +98,7 @@ public class AdminSystem {
                     }
                 } catch (Exception e) {
                     System.out.println("Invalid input, try again [AE-4]");
+                    scan.nextLine();
                 }
             } while(secondsExercise <= 0 && secondsExercise > 300);
             totalCalorieBurned = repExercise * setExercise * baseCalorieBurned;
@@ -158,7 +158,12 @@ public class AdminSystem {
     }
 
     public void viewAllUsername() {
-
+        if(listExercise.isEmpty()) {
+            System.out.println("No users/admin is made, how the hell it's possible!?");
+            return;
+        }
+        int count = 0;
+        showAllUsers(count);
     }
 
     private void showAllExercise(int count) {
@@ -181,6 +186,13 @@ public class AdminSystem {
         Exercise selectedExercise = listExercise.get(count);
         System.out.println((count+1)+". Name: "+selectedExercise.getName());
         viewOnlyName(count + 1);
+    }
+
+    private void showAllUsers(int count) {
+        if(count >= listUserAccount.size()) {
+            return;
+        }
+        System.out.println((1+count)+". Username: "+listUserAccount.get(count).getUsername());
     }
 
     private String getIntensityCategory(int rep, int set) {
