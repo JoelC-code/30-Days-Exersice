@@ -15,6 +15,7 @@ public class LoginRegister {
     public LoginRegister() {
         scan = new Scanner(System.in);
         listUser = new ArrayList<>();
+        listUser.add(new Admin("Abdussalah", "12345678", "Admin"));
     }
 
     public void login() {
