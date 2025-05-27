@@ -18,7 +18,7 @@ public class Main {
                 loginRegister.Register(scan);
                     break;
                 case 3:
-
+                System.out.println("Terima Kasih!");
                     break;
 
                 default:
