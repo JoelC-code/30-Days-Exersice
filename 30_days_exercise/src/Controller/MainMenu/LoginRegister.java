@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Class.UsersAccount.*;
+import Controller.Admin.AdminPage;
 
 import java.util.InputMismatchException;
 
@@ -68,7 +69,8 @@ public class LoginRegister {
             } 
             if (fetchedAccount instanceof Admin) {
                 Admin selectedAdmin = (Admin) fetchedAccount; 
-                System.out.println("Welcome, admin"+selectedAdmin.getUsername());
+                AdminPage toAdminPage = new AdminPage(selectedAdmin, getListAccount());
+                toAdminPage.mainMenu();
             }
         }
     }
