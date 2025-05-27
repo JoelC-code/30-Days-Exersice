@@ -114,17 +114,45 @@ public class AdminSystem {
     public void deleteExercise() {
         int deletedExercise = 0;
         int count = 0;
+        if(listExercise.isEmpty()) {
+            System.out.println("Add a new exercise first");
+            return;
+        }
         while (deletedExercise >= 1 && deletedExercise <= listExercise.size() ) {
             try {
                 viewOnlyName(count);
+                System.out.print("Exercise to be erased (numbers): ");
+                deletedExercise = scan.nextInt();
+                scan.nextLine();
+                if(deletedExercise < 1 && deletedExercise > listExercise.size()) {
+                    System.out.println("Exercise didn't exist, please try again!");
+                }
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again!");
                 scan.nextLine();
             }
         }
+        deletedExercise--;
+        String yesNo = "";
+        while (yesNo.isEmpty()) {
+            System.out.println("Are you sure to delete this exercise? (y/n)");
+            System.out.println("Nama: "+listExercise.get(deletedExercise).getName());
+            yesNo = scan.nextLine();
+            if (yesNo.equalsIgnoreCase("y")) {
+                listExercise.remove(deletedExercise);
+            } else if (yesNo.equalsIgnoreCase("n")) {
+                return;
+            } else {
+                System.out.println("Invalid, must be 'y' or 'n' as an input");
+            }
+        }
     }
 
     public void viewAllExercise() {
+        if(listExercise.isEmpty()) {
+            System.out.println("Add a new exercise first");
+            return;
+        }
         int count = 0;
         showAllExercise(count);
     }
