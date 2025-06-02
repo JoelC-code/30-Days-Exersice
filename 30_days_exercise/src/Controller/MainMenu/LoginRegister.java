@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import Class.UsersAccount.*;
 import Controller.Admin.AdminPage;
+import Controller.User.UserPage;
 
 import java.util.InputMismatchException;
 
@@ -66,7 +67,8 @@ public class LoginRegister {
         } else {
             if(fetchedAccount instanceof Users) {
                 Users selectedUser = (Users) fetchedAccount;
-                System.out.println("Login user done, welcome"+selectedUser.getUsername());
+                UserPage toUserPage = new UserPage(selectedUser);
+                toUserPage.mainMenu();
             } 
             if (fetchedAccount instanceof Admin) {
                 Admin selectedAdmin = (Admin) fetchedAccount; 
