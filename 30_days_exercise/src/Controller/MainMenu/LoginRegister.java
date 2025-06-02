@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import Class.UsersAccount.*;
 import Controller.Admin.AdminPage;
+import Controller.User.Quesionaire;
 import Controller.User.UserPage;
 
 import java.util.InputMismatchException;
@@ -65,13 +66,18 @@ public class LoginRegister {
                 System.out.println("Invalid input, check again (y/n)\n");
             }
         } else {
-            if(fetchedAccount instanceof Users) {
+            if (fetchedAccount instanceof Users) {
                 Users selectedUser = (Users) fetchedAccount;
-                UserPage toUserPage = new UserPage(selectedUser);
-                toUserPage.mainMenu();
-            } 
+                if (!selectedUser.getFirstLogin()) {
+                    UserPage toUserPage = new UserPage(selectedUser);
+                    toUserPage.mainMenu();
+                } else {
+                    Quesionaire toQuesionaire = new Quesionaire(selectedUser);
+                    toQuesionaire.askingSection();
+                }
+            }
             if (fetchedAccount instanceof Admin) {
-                Admin selectedAdmin = (Admin) fetchedAccount; 
+                Admin selectedAdmin = (Admin) fetchedAccount;
                 AdminPage toAdminPage = new AdminPage(selectedAdmin, getListAccount());
                 toAdminPage.mainMenu();
             }

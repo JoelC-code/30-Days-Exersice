@@ -55,7 +55,7 @@ public class Users extends Account{
         return roleName;
     }
 
-    public boolean isFirstLogin() {
+    public boolean getFirstLogin() {
         return firstLogin;
     }
     public void setFirstLogin(boolean firstLogin) {
