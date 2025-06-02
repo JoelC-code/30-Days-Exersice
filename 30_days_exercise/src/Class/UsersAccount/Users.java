@@ -30,6 +30,23 @@ public class Users extends Account{
     public void setAge(int age) {
         this.age = age;
     }
+
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+
+    public void setHeight(double height){
+        this.height = height;
+    }
+
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
+
+    public void setHaveOccupation(boolean haveOccupation){
+        this.haveOccupation = haveOccupation;
+    }
+
     public int getAge(){
         return age;
     }
@@ -49,7 +66,7 @@ public class Users extends Account{
     }
 
     public void setRoleName(String roleName) {
-        this.roleName = "Admin";
+        this.roleName = roleName;
     }
     public String getRoleName() {
         return roleName;
