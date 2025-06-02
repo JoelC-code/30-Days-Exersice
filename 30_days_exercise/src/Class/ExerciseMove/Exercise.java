@@ -24,6 +24,9 @@ public class Exercise {
     public String getName(){
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void setCalorieTotal(double calorieTotal) {
         this.calorieTotal = calorieTotal;
