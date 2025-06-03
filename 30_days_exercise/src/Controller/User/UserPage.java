@@ -3,6 +3,8 @@ package Controller.User;
 import java.util.Scanner;
 
 import Class.UsersAccount.*;
+import Controller.MainMenu.LoginRegister;
+import Controller.MainMenu.Main;
 
 public class UserPage {
     private Scanner scan;
@@ -16,12 +18,12 @@ public class UserPage {
     public void mainMenu() {
         int menuSelected = 0;
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
-                System.out.println("=-=-= Welcome, "+loginUser.getUsername()+" =-=-=");
+                System.out.println("=-=-= Welcome, " + loginUser.getUsername() + " =-=-=");
                 System.out.println("1. View Calender");
                 System.out.println("2. View todays's exercise");
-                System.out.println("3. Settings");
+                System.out.println("3. ViewAllExercise");
                 System.out.println("4. Logout");
                 System.out.print("> ");
                 menuSelected = scan.nextInt();
@@ -35,21 +37,23 @@ public class UserPage {
                 scan.nextLine();
             }
         }
+        ExerciseManager toManager = new ExerciseManager(loginUser);
         switch (menuSelected) {
             case 1:
-                UserPageSystem toUserSystem = new UserPageSystem();
-
+                toManager.viewCalender();
                 break;
-        
             case 2:
-                UserPageSystem toUserSystem = new UserPageSystem();
+                toManager.viewToday();
                 break;
             case 3:
-                UserPageSystem toUserSystem = new UserPageSystem();
+                toManager.viewAllExercise();
                 break;
             case 4:
-                UserPageSystem toUserSystem = new UserPageSystem();
+                Main toMainMenu = new Main();
+                toMainMenu.openingMenu();
                 break;
         }
     }
+
+    
 }

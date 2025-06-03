@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import Class.UsersAccount.*;
 import Controller.Admin.AdminPage;
-import Controller.User.Quesionaire;
+import Controller.User.Questionnaire;
 import Controller.User.UserPage;
 
 import java.util.InputMismatchException;
@@ -17,7 +17,9 @@ public class LoginRegister {
     public LoginRegister() {
         scan = new Scanner(System.in);
         listUser = new ArrayList<>();
-        listUser.add(new Admin("Abdussalah", "12345678", "Admin"));
+        listUser.add(new Admin("Abdus", "12345678", "Admin"));
+        listUser.add(new Users("Salam", "ABDUS123", "Users"));
+        
     }
 
     public void login() {
@@ -72,8 +74,8 @@ public class LoginRegister {
                     UserPage toUserPage = new UserPage(selectedUser);
                     toUserPage.mainMenu();
                 } else {
-                    Quesionaire toQuesionaire = new Quesionaire(selectedUser);
-                    toQuesionaire.askingSection();
+                    Questionnaire toQuestionnaire = new Questionnaire(selectedUser);
+                    toQuestionnaire.askingSection();
                 }
             }
             if (fetchedAccount instanceof Admin) {
@@ -106,14 +108,14 @@ public class LoginRegister {
         } while (newUsernameAccount.isEmpty());
         do {
             try {
-                System.out.println("Password account (2 Digits & 2 Capitals): ");
+                System.out.println("Password account (2 digits, 2 capitals, 8 letter minimum): ");
                 System.out.print("> ");
                 newPasswordAccount = scan.nextLine();
                 if (newPasswordAccount.isEmpty()) {
                     System.out.println("Error: Username must NOT empty, try again!");
                 } else if (newPasswordAccount.length() < 8) {
-                    System.out.println("Your password lenght must above or at 8");
-                } else if (newPasswordAccount.matches(passwordRegex)) {
+                    System.out.println("Your password length must above or at 8");
+                } else if (!newPasswordAccount.matches(passwordRegex)) {
                     System.out.println("Your password must have 2 digits and 2 capitals");
                 } else {
                     isValid = true;

@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 import Class.UsersAccount.Users;
 
-public class Quesionaire {
+public class Questionnaire {
     private Users logUser;
     private Scanner scan;
 
-    public Quesionaire(Users logUser) {
+    public Questionnaire(Users logUser) {
         this.logUser = logUser;
         scan = new Scanner(System.in);
     }
@@ -73,7 +73,7 @@ public class Quesionaire {
                 break;
         }
         logUser.setGender(gender);
-        while (height <= 154.00 && height >= 300.00) {
+        while (height < 154 || height > 300.00) {
             try {
                 System.out.print("Height (cm): ");
                 height = scan.nextDouble();
@@ -81,7 +81,7 @@ public class Quesionaire {
                 if (height < 154.00) {
                     System.out.println("Minimum height required: 154cm");
                 } else if (height > 300.00) {
-                    System.out.println("Maximum height required: 300.00");
+                    System.out.println("Maximum height required: 300cm");
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again!");
@@ -104,7 +104,7 @@ public class Quesionaire {
         }
         logUser.setWeight(weight);
         char affirmation = 'a';
-        while (affirmation != 'y' || affirmation != 'n') {
+        while (affirmation != 'y' && affirmation != 'n') {
             System.out.print("Do you have work? (y/n): ");
             String affirmationlong = scan.nextLine();
             affirmation = affirmationlong.charAt(0);
@@ -190,7 +190,7 @@ public class Quesionaire {
                 break;
         }
         logUser.setWorkoutTime(workoutTime);
-        System.out.println("\nQuestions are done! thanks for your time!\n\n");
+        System.out.println("\nQuestions are done! Thank you for your time!\n\n");
         logUser.setFirstLogin(false);
         UserPage toUserPage = new UserPage(logUser);
         toUserPage.mainMenu();
