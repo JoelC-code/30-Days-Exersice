@@ -3,7 +3,6 @@ package Controller.User;
 import java.util.Scanner;
 
 import Class.UsersAccount.*;
-import Controller.MainMenu.LoginRegister;
 import Controller.MainMenu.Main;
 
 public class UserPage {
