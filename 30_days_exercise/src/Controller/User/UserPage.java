@@ -50,6 +50,7 @@ public class UserPage {
             System.out.print("Option: ");
             option = scan.nextInt();
             String bodyPart;
+            System.out.println("test");
             switch (option) {
                 case 1:
                     bodyPart = "Upper Body";
