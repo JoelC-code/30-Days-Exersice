@@ -44,7 +44,7 @@ public class Quesionaire {
             }
         }
         logUser.setAge(age);
-        while (selectedGender >= 1 || selectedGender <= 3) {
+        while (selectedGender < 1 || selectedGender > 3) {
             try {
                 System.out.println("Gender: ");
                 System.out.println("1. Male");
@@ -53,7 +53,7 @@ public class Quesionaire {
                 System.out.print("Option: ");
                 selectedGender = scan.nextInt();
                 scan.nextLine();
-                if (selectedGender < 1 && selectedGender > 3) {
+                if (selectedGender < 1 || selectedGender > 3) {
                     System.out.println("Invalid menu, please try again!");
                 }
             } catch (Exception e) {

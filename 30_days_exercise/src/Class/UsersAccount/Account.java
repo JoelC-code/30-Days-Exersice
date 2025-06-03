@@ -1,10 +1,10 @@
 package Class.UsersAccount;
 
 public abstract class Account {
-    private String username, password;
-    private int ID;
+    protected String username, password;
+    protected int ID;
     // Agar bisa nambah tanpa membuat element baru, diberi static
-    private static int amount = 1;
+    protected static int amount = 1;
     public Account (String username, String password){
         this.username = username;
         this.password = password;

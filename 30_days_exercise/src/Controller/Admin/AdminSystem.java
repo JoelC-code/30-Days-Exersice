@@ -1,6 +1,7 @@
 package Controller.Admin;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import Class.ExerciseMove.Exercise;
@@ -10,7 +11,7 @@ import Class.UsersAccount.Users;
 
 public class AdminSystem {
     private ArrayList<Account> listUserAccount;
-    private ArrayList<Exercise> listExercise;
+    private LinkedList<Exercise> listExercise;
     private Scanner scan;
 
     public AdminSystem(ArrayList<Account> listUserAccount) {

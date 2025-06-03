@@ -37,10 +37,18 @@ public class UserPage {
         }
         switch (menuSelected) {
             case 1:
-                
+                UserPageSystem toUserSystem = new UserPageSystem();
+
                 break;
         
-            default:
+            case 2:
+                UserPageSystem toUserSystem = new UserPageSystem();
+                break;
+            case 3:
+                UserPageSystem toUserSystem = new UserPageSystem();
+                break;
+            case 4:
+                UserPageSystem toUserSystem = new UserPageSystem();
                 break;
         }
     }
