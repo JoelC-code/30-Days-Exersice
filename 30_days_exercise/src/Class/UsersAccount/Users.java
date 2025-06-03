@@ -7,6 +7,8 @@ public class Users extends Account{
     private boolean haveOccupation;
     private String roleName;
     private boolean firstLogin;
+    private int workoutDays;
+    private int workoutTime;
     public Users(String username, String password, int age, String gender, double height, double weight, boolean haveOccupation, boolean firstLogin){
         super(username, password);
         this.age = age;
@@ -46,6 +48,34 @@ public class Users extends Account{
     }
     public boolean getHaveOccupation(){
         return haveOccupation;
+    }
+
+    public int getWorkoutDays() {
+        return workoutDays;
+    }
+    public void setWorkoutDays(int workoutDays) {
+        this.workoutDays = workoutDays;
+    }
+    public int getWorkoutTime() {
+        return workoutTime;
+    }
+    public void setWorkoutTime(int workoutTime) {
+        this.workoutTime = workoutTime;
+    }
+        public void setGender(String gender){
+        this.gender = gender;
+    }
+
+    public void setHeight(double height){
+        this.height = height;
+    }
+
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
+
+    public void setHaveOccupation(boolean haveOccupation){
+        this.haveOccupation = haveOccupation;
     }
 
     public void setRoleName(String roleName) {

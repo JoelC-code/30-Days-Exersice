@@ -1,10 +1,8 @@
 package Controller.User;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import Class.UsersAccount.*;
-import Class.ExerciseMove.Exercise;
 
 public class UserPage {
     private Scanner scan;
