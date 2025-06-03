@@ -16,9 +16,9 @@ public class UserPage {
     public void mainMenu() {
         int menuSelected = 0;
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
-                System.out.println("=-=-= Welcome, "+loginUser.getUsername()+" =-=-=");
+                System.out.println("=-=-= Welcome, " + loginUser.getUsername() + " =-=-=");
                 System.out.println("1. View Calender");
                 System.out.println("2. View todays's exercise");
                 System.out.println("3. Settings");
@@ -37,11 +37,22 @@ public class UserPage {
         }
         switch (menuSelected) {
             case 1:
-                
+
                 break;
-        
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+
             default:
                 break;
         }
     }
+
+    
 }
