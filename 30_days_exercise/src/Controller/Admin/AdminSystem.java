@@ -14,8 +14,9 @@ public class AdminSystem {
     private LinkedList<Exercise> listExercise;
     private Scanner scan;
 
-    public AdminSystem(ArrayList<Account> listUserAccount) {
+    public AdminSystem(ArrayList<Account> listUserAccount, ArrayList<Exercise> listExercises) {
         this.listUserAccount = listUserAccount;
+        this.listExercise = new LinkedList<>(listExercises);
         scan = new Scanner(System.in);
     }
 
@@ -47,13 +48,13 @@ public class AdminSystem {
         } while (descExercise.isEmpty());
         do {
             try {
-                System.out.print("Base Calorie Burned (kcal/minute): ");
+                System.out.print("Base Calorie Burned (kcal): ");
                 baseCalorieBurned = scan.nextFloat();
                 scan.nextLine();
                 if (baseCalorieBurned <= 0) {
                     System.out.println("You cannot burn 0 or below calorie");
                 } else if (baseCalorieBurned > 25) {
-                    System.out.println("Burned calorie max is 30 Kcal/minutes");
+                    System.out.println("Burned calorie max is 30 Kcal");
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again [AE-1]");
@@ -104,10 +105,7 @@ public class AdminSystem {
             }
         } while (secondsExercise <= 0 && secondsExercise > 300);
         totalCalorieBurned = repExercise * setExercise * baseCalorieBurned;
-        String intensityExercise = getIntensityCategory(repExercise, setExercise);
-
-        listExercise.add(new Exercise(nameExercise, totalCalorieBurned, repExercise, setExercise, secondsExercise,
-                intensityExercise, descExercise));
+        listExercise.add(new Exercise(nameExercise, totalCalorieBurned, repExercise, setExercise, secondsExercise, descExercise));
     }
 
     public void updateExercise() {
@@ -168,7 +166,7 @@ public class AdminSystem {
                 if (updateCal < 0) {
                     System.out.println("Invalid Calorie base, try again!");
                 } else if (updateCal > 25) {
-                    System.out.println("Burned calorie max is 30 Kcal/minutes");
+                    System.out.println("Burned calorie max is 30 Kcal");
                 }
                 isValid = true;
             } catch (Exception e) {
@@ -227,9 +225,7 @@ public class AdminSystem {
             }
         }
         updateCalBurned = updateRep * updateSet * updateCal;
-        String intensityExercise = getIntensityCategory(updateRep, updateSet);
         edittedExercise.setCalorieTotal(updateCalBurned);
-        edittedExercise.setIntensityCategory(intensityExercise);
         System.out.println("Changes is done for the exercise "+edittedExercise.getName()+"!");
     }
 
@@ -284,7 +280,7 @@ public class AdminSystem {
             System.out.println("There's no users added yet");
             return;
         }
-        System.out.println("=-=-= Accounts Exist =-=-=");
+        System.out.println("=-=-= Accounts =-=-=");
         int index = 0;
         showAllUser(index);
     }
@@ -303,6 +299,7 @@ public class AdminSystem {
             Users selectedUsers = (Users) selectedAccount;
             System.out.print(" [" + selectedUsers.getRoleName() + "]");
         }
+        showAllExercise(index + 1);
     }
 
     private void showAllExercise(int count) {
@@ -325,17 +322,5 @@ public class AdminSystem {
         Exercise selectedExercise = listExercise.get(count);
         System.out.println((count + 1) + ". Name: " + selectedExercise.getName());
         viewOnlyName(count + 1);
-    }
-
-    private String getIntensityCategory(int rep, int set) {
-        int volumeTotal = rep * set;
-
-        if (volumeTotal <= 40) {
-            return "Light";
-        } else if (volumeTotal <= 70) {
-            return "Moderate";
-        } else {
-            return "Heavy";
-        }
     }
 }

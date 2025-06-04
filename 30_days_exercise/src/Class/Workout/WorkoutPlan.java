@@ -21,7 +21,7 @@ public class WorkoutPlan implements WorkoutQueue {
         if(newWorkout instanceof Exercise) {
             exerciseList.add(newWorkout);
         } else {
-            throw new IllegalArgumentException("Something went wrong when you want to add a workout, call Customer Service (Err:WP-1)");
+            throw new IllegalArgumentException("Something went wrong. When you want to add a workout, call Customer Service (Err:WP-1)");
         }
     }
 
