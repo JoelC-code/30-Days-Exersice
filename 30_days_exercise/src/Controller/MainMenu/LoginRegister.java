@@ -3,6 +3,7 @@ package Controller.MainMenu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Class.ExerciseMove.Exercise;
 import Class.UsersAccount.*;
 import Controller.Admin.AdminPage;
 import Controller.User.Questionnaire;
@@ -12,14 +13,12 @@ import java.util.InputMismatchException;
 
 public class LoginRegister {
     private Scanner scan;
-    private ArrayList<Account> listUser;
-
-    public LoginRegister() {
+    private ArrayList<Account> listAccounts;
+    private ArrayList<Exercise> listExercises;
+    public LoginRegister(ArrayList<Account> listAccounts, ArrayList<Exercise> listExercises) {
         scan = new Scanner(System.in);
-        listUser = new ArrayList<>();
-        listUser.add(new Admin("Abdus", "12345678", "Admin"));
-        listUser.add(new Users("Salam", "ABDUS123", "Users"));
-        
+        this.listAccounts = listAccounts;
+        this.listExercises = listExercises;
     }
 
     public void login() {
@@ -80,7 +79,7 @@ public class LoginRegister {
             }
             if (fetchedAccount instanceof Admin) {
                 Admin selectedAdmin = (Admin) fetchedAccount;
-                AdminPage toAdminPage = new AdminPage(selectedAdmin, getListAccount());
+                AdminPage toAdminPage = new AdminPage(selectedAdmin, getListAccount(), listExercises);
                 toAdminPage.mainMenu();
             }
         }
@@ -125,14 +124,14 @@ public class LoginRegister {
                 scan.nextLine();
             }
         } while (!isValid);
-        listUser.add(new Users(newUsernameAccount, newPasswordAccount, "User"));
+        listAccounts.add(new Users(newUsernameAccount, newPasswordAccount, "User"));
         System.out.println("\n=-=- Account has been made! -=-=\n");
         return;
     }
 
     public Account checkLoginAccount(String username, String password) {
-        for (int i = 0; i < listUser.size(); i++) {
-            Account selectedAccount = listUser.get(i);
+        for (int i = 0; i < listAccounts.size(); i++) {
+            Account selectedAccount = listAccounts.get(i);
             if (selectedAccount.getUsername().equals(username) && selectedAccount.getPassword().equals(password)) {
                 return (Account) selectedAccount;
             }
@@ -141,6 +140,6 @@ public class LoginRegister {
     }
 
     public ArrayList<Account> getListAccount() {
-        return listUser;
+        return listAccounts;
     }
 }

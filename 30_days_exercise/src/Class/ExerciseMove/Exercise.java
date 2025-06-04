@@ -6,14 +6,14 @@ public class Exercise {
     private String name, intensityCategory, Description;
     private static int amount = 1;
 
-    public Exercise(String name, double calorieTotal, int repExercise, int setExercise, int secondsExercise, String intensityCategory, String Description){
+    public Exercise(String name, double calorieTotal, int repExercise, int setExercise, int secondsExercise, String Description){
         this.name = name;
         this.calorieTotal = calorieTotal;
         this.repExercise = repExercise;
         this.setExercise = setExercise;
         this.ID = amount++;
         this.secondsExercise = secondsExercise;
-        this.intensityCategory = intensityCategory;
+        this.intensityCategory = getIntensityCategory();
         this.Description = Description;
     }
 
@@ -60,8 +60,15 @@ public class Exercise {
         return intensityCategory;
     }
     public void setIntensityCategory(String intensityCategory) {
-        this.intensityCategory = intensityCategory;
-    }
+        int volumeTotal = this.repExercise * this.setExercise;
+
+        if (volumeTotal <= 40) {
+            intensityCategory = "Light";
+        } else if (volumeTotal <= 70) {
+            intensityCategory = "Moderate";
+        } else {
+            intensityCategory = "Heavy";
+        }    }
 
     public String getDescription() {
         return Description;

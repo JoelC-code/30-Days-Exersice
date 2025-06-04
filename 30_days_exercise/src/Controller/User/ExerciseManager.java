@@ -10,7 +10,7 @@ public class ExerciseManager {
     }
 
     public void viewCalender() {
-
+        
     }
 
     public void viewToday() {

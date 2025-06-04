@@ -2,13 +2,28 @@ package Controller.MainMenu;
 
 import java.util.*;
 
+import Class.ExerciseMove.Exercise;
+import Class.UsersAccount.Account;
+import Class.UsersAccount.Admin;
+import Class.UsersAccount.Users;
+
 public class Main {
     private Scanner scan;
     private LoginRegister systemLogin;
+    private ArrayList<Account> listAccounts;
+    private ArrayList<Exercise> listExercises;
 
     public Main() {
         scan = new Scanner(System.in);
-        systemLogin = new LoginRegister();
+        listAccounts = new ArrayList<>();
+        listExercises = new ArrayList<>();
+
+        listAccounts.add(new Admin("Abdus", "12345678", "Admin"));
+        listAccounts.add(new Users("AbdusSalam", "123123123", "Users"));
+        listExercises.add(new Exercise("Push Up", 600, 10, 5, 30, "Push Up"));
+        listExercises.add(new Exercise("Sit Up", 600, 15, 8, 30, "Sit Up"));
+        listExercises.add(new Exercise("Pull Up", 600, 5, 10, 30, "Pull Up"));
+        systemLogin = new LoginRegister(listAccounts, listExercises);
     }
 
     public void openingMenu() {
