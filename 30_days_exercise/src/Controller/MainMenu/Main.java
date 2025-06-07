@@ -20,9 +20,16 @@ public class Main {
 
         listAccounts.add(new Admin("Abdus", "12345678", "Admin"));
         listAccounts.add(new Users("AbdusSalam", "123123123", "Users"));
-        listExercises.add(new Exercise("Push Up", 600, 10, 5, 30, "Push Up"));
-        listExercises.add(new Exercise("Sit Up", 600, 15, 8, 30, "Sit Up"));
-        listExercises.add(new Exercise("Pull Up", 600, 5, 10, 30, "Pull Up"));
+        listExercises.add(new Exercise("Push Up", 30, 10, 5, 30, "Push Up"));
+        listExercises.add(new Exercise("Sit Up", 25, 15, 8, 30, "Sit Up"));
+        listExercises.add(new Exercise("Pull Up", 40, 5, 10, 30, "Pull Up"));
+        listExercises.add(new Exercise("Jumping Rope", 35, 10, 5, 30, "Jumping Rope"));
+        listExercises.add(new Exercise("Interval Running", 45, 15, 8, 30, "Interval Running"));
+        listExercises.add(new Exercise("Squats", 20, 5, 10, 30, "Walking"));
+        listExercises.add(new Exercise("Plank", 30, 10, 5, 30, "Plank"));
+        listExercises.add(new Exercise("Dance", 25, 15, 8, 30, "Dance"));
+        listExercises.add(new Exercise("Pull Down", 40, 5, 10, 30, "Pull Down"));
+
         systemLogin = new LoginRegister(listAccounts, listExercises);
     }
 

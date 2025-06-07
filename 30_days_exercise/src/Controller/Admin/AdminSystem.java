@@ -299,7 +299,6 @@ public class AdminSystem {
             Users selectedUsers = (Users) selectedAccount;
             System.out.print(" [" + selectedUsers.getRoleName() + "]");
         }
-        showAllExercise(index + 1);
     }
 
     private void showAllExercise(int count) {
@@ -311,6 +310,7 @@ public class AdminSystem {
         System.out.println("Description: " + selectedExercise.getDescription());
         System.out.println("Sets: " + selectedExercise.getSetExercise());
         System.out.println("Reps: " + selectedExercise.getRepExercise());
+        System.out.println("Time: " + selectedExercise.getSecondsExercise() + " Seconds");
         System.out.println("Calorie Burned: " + selectedExercise.getCalorieTotal());
         showAllExercise(count + 1);
     }

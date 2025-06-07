@@ -1,16 +1,16 @@
 package Class.ExerciseMove;
 
 public class Exercise {
-    private int ID, repExercise, setExercise, secondsExercise;
-    private double calorieTotal;
+    private int ID, repExercise, setExercise;
+    private double calorieTotal, secondsExercise;
     private String name, intensityCategory, Description;
     private static int amount = 1;
 
-    public Exercise(String name, double calorieTotal, int repExercise, int setExercise, int secondsExercise, String Description){
+    public Exercise(String name, double baseCalorie, int repExercise, int setExercise, double secondsExercise, String Description){
         this.name = name;
-        this.calorieTotal = calorieTotal;
         this.repExercise = repExercise;
         this.setExercise = setExercise;
+        this.calorieTotal = baseCalorie * repExercise * setExercise * (secondsExercise / 60);
         this.ID = amount++;
         this.secondsExercise = secondsExercise;
         this.intensityCategory = getIntensityCategory();
@@ -50,8 +50,9 @@ public class Exercise {
     }
 
     public int getSecondsExercise() {
-        return secondsExercise;
+        return (int) secondsExercise;
     }
+
     public void setSecondsExercise(int secondsExercise) {
         this.secondsExercise = secondsExercise;
     }

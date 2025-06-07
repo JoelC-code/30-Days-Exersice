@@ -1,6 +1,11 @@
 package Class.UsersAccount;
 
-public class Users extends Account{
+import java.util.LinkedList;
+
+import Class.ExerciseMove.Exercise;
+import Class.Workout.WorkoutPlan;
+
+public class Users extends Account {
     private int age;
     private String gender;
     private double height, weight;
@@ -9,7 +14,10 @@ public class Users extends Account{
     private boolean firstLogin;
     private int workoutDays;
     private int workoutTime;
-    public Users(String username, String password, int age, String gender, double height, double weight, boolean haveOccupation, boolean firstLogin){
+    private WorkoutPlan workoutPlan;
+
+    public Users(String username, String password, int age, String gender, double height, double weight,
+            boolean haveOccupation, boolean firstLogin) {
         super(username, password);
         this.age = age;
         this.gender = gender;
@@ -19,7 +27,8 @@ public class Users extends Account{
         this.firstLogin = firstLogin;
         this.roleName = "User";
     }
-    public Users(String username, String password, String roleName){
+
+    public Users(String username, String password, String roleName) {
         super(username, password);
         this.age = 0;
         this.gender = "Non-Binary";
@@ -29,58 +38,67 @@ public class Users extends Account{
         this.firstLogin = true;
         this.roleName = roleName;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
-    public int getAge(){
+
+    public int getAge() {
         return age;
     }
 
-    public String getGender(){
+    public String getGender() {
         return gender;
     }
-    public double getHeight(){
+
+    public double getHeight() {
         return height;
     }
 
-    public double getWeight(){
+    public double getWeight() {
         return weight;
     }
-    public boolean getHaveOccupation(){
+
+    public boolean getHaveOccupation() {
         return haveOccupation;
     }
 
     public int getWorkoutDays() {
         return workoutDays;
     }
+
     public void setWorkoutDays(int workoutDays) {
         this.workoutDays = workoutDays;
     }
+
     public int getWorkoutTime() {
         return workoutTime;
     }
+
     public void setWorkoutTime(int workoutTime) {
         this.workoutTime = workoutTime;
     }
-        public void setGender(String gender){
+
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public void setHeight(double height){
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public void setWeight(double weight){
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public void setHaveOccupation(boolean haveOccupation){
+    public void setHaveOccupation(boolean haveOccupation) {
         this.haveOccupation = haveOccupation;
     }
 
     public void setRoleName(String roleName) {
         this.roleName = "Admin";
     }
+
     public String getRoleName() {
         return roleName;
     }
@@ -88,7 +106,18 @@ public class Users extends Account{
     public boolean getFirstLogin() {
         return firstLogin;
     }
+
     public void setFirstLogin(boolean firstLogin) {
         this.firstLogin = firstLogin;
+    }
+
+    public void assignExercise(LinkedList<Exercise> selectedExercises) {
+        if (workoutPlan == null) {
+            workoutPlan = new WorkoutPlan(1, selectedExercises, false);
+        } else {
+            for (Exercise e : selectedExercises) {
+                workoutPlan.addWorkout(e);
+            }
+        }
     }
 }
