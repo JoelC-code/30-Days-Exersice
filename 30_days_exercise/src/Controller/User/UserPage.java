@@ -15,6 +15,7 @@ public class UserPage {
     }
 
     public void mainMenu() {
+        ExerciseManager toManager = new ExerciseManager(loginUser);
         int menuSelected = 0;
         boolean isValid = false;
         while (!isValid) {
@@ -29,14 +30,14 @@ public class UserPage {
                 scan.nextLine();
                 if (menuSelected >= 1 && menuSelected <= 4) {
                     isValid = true;
+                } else {
+                    System.out.println("Invalid menu selection, please try again!");
                 }
-                System.out.println("Invalid menu selection, please try again!");
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again!");
                 scan.nextLine();
             }
         }
-        ExerciseManager toManager = new ExerciseManager(loginUser);
         switch (menuSelected) {
             case 1:
                 toManager.viewCalender();
@@ -54,5 +55,4 @@ public class UserPage {
         }
     }
 
-    
 }

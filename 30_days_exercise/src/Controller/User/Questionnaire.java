@@ -14,11 +14,8 @@ public class Questionnaire {
     }
 
     public void askingSection() {
-        int option = 0;
         int age = 0;
         int selectedGender = 0;
-        int activity = 0;
-        int workoutTime = 0;
         double height = 0;
         double weight = 0;
         String name = "";

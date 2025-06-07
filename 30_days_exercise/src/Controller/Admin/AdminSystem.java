@@ -236,13 +236,13 @@ public class AdminSystem {
             System.out.println("Add a new exercise first");
             return;
         }
-        while (deletedExercise >= 1 && deletedExercise <= listExercise.size()) {
+        while (deletedExercise < 1 || deletedExercise > listExercise.size()) {
             try {
                 viewOnlyName(count);
                 System.out.print("Exercise to be erased (numbers): ");
                 deletedExercise = scan.nextInt();
                 scan.nextLine();
-                if (deletedExercise < 1 && deletedExercise > listExercise.size()) {
+                if (deletedExercise < 1 || deletedExercise > listExercise.size()) {
                     System.out.println("Exercise didn't exist, please try again!");
                 }
             } catch (Exception e) {
