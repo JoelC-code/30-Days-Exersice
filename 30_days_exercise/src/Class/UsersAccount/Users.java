@@ -9,21 +9,16 @@ public class Users extends Account {
     private int age;
     private String gender;
     private double height, weight;
-    private boolean haveOccupation;
     private String roleName;
     private boolean firstLogin;
-    private int workoutDays;
-    private int workoutTime;
     private WorkoutPlan workoutPlan;
 
-    public Users(String username, String password, int age, String gender, double height, double weight,
-            boolean haveOccupation, boolean firstLogin) {
+    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin) {
         super(username, password);
         this.age = age;
         this.gender = gender;
         this.height = height;
         this.weight = weight;
-        this.haveOccupation = haveOccupation;
         this.firstLogin = firstLogin;
         this.roleName = "User";
     }
@@ -34,7 +29,6 @@ public class Users extends Account {
         this.gender = "Non-Binary";
         this.height = 0;
         this.weight = 0;
-        this.haveOccupation = false;
         this.firstLogin = true;
         this.roleName = roleName;
     }
@@ -59,26 +53,6 @@ public class Users extends Account {
         return weight;
     }
 
-    public boolean getHaveOccupation() {
-        return haveOccupation;
-    }
-
-    public int getWorkoutDays() {
-        return workoutDays;
-    }
-
-    public void setWorkoutDays(int workoutDays) {
-        this.workoutDays = workoutDays;
-    }
-
-    public int getWorkoutTime() {
-        return workoutTime;
-    }
-
-    public void setWorkoutTime(int workoutTime) {
-        this.workoutTime = workoutTime;
-    }
-
     public void setGender(String gender) {
         this.gender = gender;
     }
@@ -90,11 +64,7 @@ public class Users extends Account {
     public void setWeight(double weight) {
         this.weight = weight;
     }
-
-    public void setHaveOccupation(boolean haveOccupation) {
-        this.haveOccupation = haveOccupation;
-    }
-
+    
     public void setRoleName(String roleName) {
         this.roleName = "Admin";
     }
