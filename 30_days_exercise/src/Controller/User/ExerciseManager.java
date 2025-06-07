@@ -15,6 +15,7 @@ public class ExerciseManager {
         wc.setDate(null);
         System.out.println(wc.getFormattedDate());
         wc.displayDaysInMonth();
+        
     }
 
     public void viewToday() {
