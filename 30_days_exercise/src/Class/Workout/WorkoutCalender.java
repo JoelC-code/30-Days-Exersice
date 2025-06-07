@@ -22,7 +22,7 @@ public class WorkoutCalender extends CalenderBase {
 
     @Override
     public String getFormattedDate() {
-        return "Today is: " + day + ", Week: " + week + ", Month: " + month;
+        return "Today is: " + day;
     }
 
     public void displayDaysInMonth() {
@@ -30,13 +30,13 @@ public class WorkoutCalender extends CalenderBase {
         cal.set(Calendar.MONTH, monthIndex);
         cal.set(Calendar.YEAR, year);
 
-        int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        System.out.println("Days in " + month + " " + year + ":");
-        for (int i = 1; i <= daysInMonth; i++) {
+        System.out.println("Days :");
+        for (int i = 1; i <= 30; i++) {
             if(i % 7 != 0) {
-                System.out.print(i);
+                if(i < 10) System.out.print(i+"  ");
+                else System.out.print(i+" ");
             } else {
+                System.out.println();
                 System.out.println();
             }
         }

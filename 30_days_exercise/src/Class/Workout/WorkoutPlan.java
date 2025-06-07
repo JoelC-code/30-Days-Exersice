@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 import Class.ExerciseMove.Exercise;
 
-public class WorkoutPlan implements WorkoutQueue {
+public class WorkoutPlan {
     private LinkedList<Exercise> exerciseList = new LinkedList<>();
     private int selectedDay;
     private boolean isDone;
@@ -16,7 +16,6 @@ public class WorkoutPlan implements WorkoutQueue {
     }
 
 
-    @Override
     public void addWorkout(Exercise newWorkout) {
         if(newWorkout instanceof Exercise) {
             exerciseList.add(newWorkout);
@@ -25,7 +24,6 @@ public class WorkoutPlan implements WorkoutQueue {
         }
     }
 
-    @Override
     public Exercise deleteWorkout() {
         if(!exerciseList.isEmpty()) {
             return exerciseList.removeFirst();
@@ -35,7 +33,6 @@ public class WorkoutPlan implements WorkoutQueue {
         }
     }
 
-    @Override
     public Exercise checkFirst() {
         if(!exerciseList.isEmpty()) {
             return exerciseList.getFirst();
@@ -45,7 +42,6 @@ public class WorkoutPlan implements WorkoutQueue {
         }
     }
 
-    @Override
     public boolean isEmpty () {
         return exerciseList.isEmpty();
     }
