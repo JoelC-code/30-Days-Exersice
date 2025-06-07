@@ -18,6 +18,6 @@ public class ExerciseManager {
     }
 
     public void viewAllExercise() {
-
+        
     }
 }
