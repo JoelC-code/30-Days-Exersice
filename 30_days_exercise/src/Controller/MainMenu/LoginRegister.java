@@ -57,8 +57,8 @@ public class LoginRegister {
         if (fetchedAccount == null) {
             String confirmationTry = "";
             while (!confirmationTry.equalsIgnoreCase("y") && !confirmationTry.equalsIgnoreCase("n")) {
-                System.out.println("Account is not found, try again?");
-                System.out.println("> ");
+                System.out.println("Account is not found, try again? (y/n)");
+                System.out.print("> ");
                 confirmationTry = scan.nextLine();
                 if (confirmationTry.equalsIgnoreCase("y")) {
                     login();

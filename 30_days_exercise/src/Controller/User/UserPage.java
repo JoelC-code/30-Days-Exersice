@@ -3,7 +3,7 @@ package Controller.User;
 import java.util.Scanner;
 
 import Class.UsersAccount.*;
-import Controller.MainMenu.StartApp;
+import Controller.MainMenu.*;
 
 public class UserPage {
     private Scanner scan;
@@ -16,7 +16,7 @@ public class UserPage {
 
     public void mainMenu() {
         ExerciseManager toManager = new ExerciseManager(loginUser);
-        System.out.println("=-=-= Welcome, " + loginUser.getName() + " =-=-=");
+        System.out.println("=-=-= Welcome, " + loginUser.getUsername() + " =-=-=");
 
         int menuSelected = -1;
         while (menuSelected != 0) {
@@ -41,7 +41,7 @@ public class UserPage {
                     toManager.viewAllExercise();
                     break;
                 case 4:
-                    StartApp toMainMenu = new StartApp();
+                    Main toMainMenu = new Main();
                     toMainMenu.openingMenu();
                     break;
             }

@@ -150,10 +150,6 @@ public class Users extends Account {
                     break;
             }
         }
-        System.out.println("DEBUG - Total exercises: " + allExercises.size());
-        System.out.println("Light: " + lightList.size());
-        System.out.println("Moderate: " + moderateList.size());
-        System.out.println("Heavy: " + heavyList.size());
 
         if (lightList.isEmpty() || moderateList.isEmpty() || heavyList.isEmpty()) {
             System.out
