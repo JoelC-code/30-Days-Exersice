@@ -12,12 +12,12 @@ public class Users extends Account {
     private double height, weight;
     private String roleName;
     private boolean firstLogin;
+    private int totalOlahraga;
     private int exerciseException;
-    private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
-    private LinkedList<Exercise> listExercises = getListExercises();
+    private WorkoutPlan[] workoutPlans;
+    private LinkedList<Exercise> listExercises;
 
-    public Users(String username, String password, String name, int age, String gender, double height, double weight,
-            boolean firstLogin, int totalOlahraga, WorkoutPlan workoutPlan) {
+    public Users(String username, String password, String name, int age, String gender, double height, double weight,boolean firstLogin, WorkoutPlan[] workoutPlans) {
         super(username, password);
         this.name = name;
         this.age = age;
@@ -26,8 +26,9 @@ public class Users extends Account {
         this.weight = weight;
         this.firstLogin = firstLogin;
         this.roleName = "User";
-        this.totalOlahraga = totalOlahraga;
-        this.workoutPlan = workoutPlan;
+        this.workoutPlans = workoutPlans;
+        this.listExercises = getExerciseList();
+        this.totalOlahraga = listExercises.size();
     }
 
     public Users(String username, String password, String roleName) {
@@ -46,7 +47,7 @@ public class Users extends Account {
         this.name = name;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -104,17 +105,27 @@ public class Users extends Account {
 
     public void setTotalOlahraga(int totalOlahraga) {
         this.totalOlahraga = totalOlahraga;
+    }
+
     public void setExerciseException(int exerciseException) {
         this.exerciseException = exerciseException;
     }
 
     public void createExercise(int totalExercise) {
-        for(int i = 0; i < 7; i++) {
-            weeklyPlans[i] = new WorkoutPlan(totalExercise);
+        for (int i = 0; i < 7; i++) {
+            this.workoutPlans[i] = new WorkoutPlan(totalExercise);
         }
     }
 
     public LinkedList<Exercise> getExerciseList() {
-        return workoutPlan.getExerciseList();
+        LinkedList<Exercise> allExercises = new LinkedList<>();
+        if (workoutPlans != null) {
+            for (WorkoutPlan plan : workoutPlans) {
+                if (plan != null && plan.getExerciseList() != null) {
+                    allExercises.addAll(plan.getExerciseList());
+                }
+            }
+        }
+        return allExercises;
     }
 }

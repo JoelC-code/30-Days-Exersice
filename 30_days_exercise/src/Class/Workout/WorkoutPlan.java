@@ -9,10 +9,13 @@ public class WorkoutPlan {
     private int maxTotal;
 
     public WorkoutPlan(int maxTotal) {
-        this.exerciseList = new LinkedList<>();
         this.maxTotal = maxTotal;
     }
 
+    public WorkoutPlan(LinkedList<Exercise> exerciseList, int maxTotal) {
+        this.exerciseList = exerciseList;
+        this.maxTotal = maxTotal;
+    }
 
     public void addWorkout(Exercise newWorkout) {
         if(newWorkout instanceof Exercise) {

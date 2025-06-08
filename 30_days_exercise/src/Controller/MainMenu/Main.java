@@ -12,14 +12,14 @@ public class Main {
     private Scanner scan;
     private LoginRegister systemLogin;
     private ArrayList<Account> listAccounts;
-    private ArrayList<Exercise> listExercises;
+    private LinkedList<Exercise> listExercises;
     private LinkedList<Exercise> listExercisesTemp;
-    private WorkoutPlan workoutPlanTemp;
+    private WorkoutPlan[] workoutPlanTemp;
 
     public Main() {
         scan = new Scanner(System.in);
         listAccounts = new ArrayList<>();
-        listExercises = new ArrayList<>();
+        listExercises = new LinkedList<>();
 
         listAccounts.add(new Admin("Abdus", "12345678", "Admin"));
         listAccounts.add(new Users("A", "2", "Users"));
@@ -40,8 +40,9 @@ public class Main {
         listExercisesTemp.add(listExercises.get(2));
         listExercisesTemp.add(listExercises.get(3));
         listExercisesTemp.add(listExercises.get(4));
-        workoutPlanTemp = new WorkoutPlan(30, listExercisesTemp, false);
-        listAccounts.add(new Users("Salam", "1234", "Abdus Salam", 15, "Male", 160, 70, false, 5, workoutPlanTemp));
+        workoutPlanTemp = new WorkoutPlan[7];
+        workoutPlanTemp[0] = new WorkoutPlan(listExercisesTemp, 0);
+        listAccounts.add(new Users("Salam", "1234", "Abdus Salam", 15, "Male", 160, 70, false, workoutPlanTemp));
 
         systemLogin = new LoginRegister(listAccounts, listExercises);
     }
