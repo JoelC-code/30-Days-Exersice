@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import Class.ExerciseMove.Exercise;
 import Class.Workout.WorkoutPlan;
-import Controller.MainMenu.*;
 
 public class Users extends Account {
     private int age;
@@ -14,7 +13,7 @@ public class Users extends Account {
     private boolean firstLogin;
     private int exerciseException;
     private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
-    private LinkedList<Exercise> listExercises;
+    private LinkedList<Exercise> listExercises = getListExercises();
 
     public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int exerciseException) {
         super(username, password);
