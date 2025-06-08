@@ -8,7 +8,7 @@ import Class.UsersAccount.Admin;
 import Class.UsersAccount.Users;
 import Class.Workout.WorkoutPlan;
 
-public class Main {
+public class StartApp {
     private Scanner scan;
     private LoginRegister systemLogin;
     private ArrayList<Account> listAccounts;
@@ -16,7 +16,7 @@ public class Main {
     private LinkedList<Exercise> listExercisesTemp;
     private WorkoutPlan[] workoutPlanTemp;
 
-    public Main() {
+    public StartApp() {
         scan = new Scanner(System.in);
         listAccounts = new ArrayList<>();
         listExercises = new LinkedList<>();

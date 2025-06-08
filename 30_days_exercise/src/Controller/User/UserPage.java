@@ -3,7 +3,7 @@ package Controller.User;
 import java.util.Scanner;
 
 import Class.UsersAccount.*;
-import Controller.MainMenu.Main;
+import Controller.MainMenu.StartApp;
 
 public class UserPage {
     private Scanner scan;
@@ -41,7 +41,7 @@ public class UserPage {
                     toManager.viewAllExercise();
                     break;
                 case 4:
-                    Main toMainMenu = new Main();
+                    StartApp toMainMenu = new StartApp();
                     toMainMenu.openingMenu();
                     break;
             }

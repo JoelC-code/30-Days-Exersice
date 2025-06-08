@@ -1,8 +1,8 @@
 package Controller.MainMenu;
 
-public class Start {
+public class Main {
     public static void main(String[] args) {
-        Main start = new Main();
+        StartApp start = new StartApp();
         start.openingMenu();
     }
 }
