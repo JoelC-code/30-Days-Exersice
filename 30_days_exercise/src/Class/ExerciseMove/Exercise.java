@@ -89,4 +89,8 @@ public class Exercise {
     public void setDescription(String description) {
         Description = description;
     }
+
+    public String toString() {
+        return getName()+" ["+getIntensityCategory()+"]";
+    }
 }

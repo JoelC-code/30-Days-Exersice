@@ -290,21 +290,23 @@ public class AdminSystem {
             return;
         }
         Account selectedAccount = listUserAccount.get(index);
-        System.out.println((1 + index) + ". Name: " + selectedAccount.getUsername());
+        System.out.print((1 + index) + ". Name: " + selectedAccount.getUsername());
         if (selectedAccount instanceof Admin) {
             Admin selectedAdmin = (Admin) selectedAccount;
-            System.out.print(" [" + selectedAdmin.getRoleName() + "]");
+            System.out.print(" [" + selectedAdmin.getRoleName() + "]\n");
         }
         if (selectedAccount instanceof Users) {
             Users selectedUsers = (Users) selectedAccount;
-            System.out.print(" [" + selectedUsers.getRoleName() + "]");
+            System.out.print(" [" + selectedUsers.getRoleName() + "]\n");
         }
+        showAllUser(index + 1);
     }
 
     private void showAllExercise(int count) {
         if (count >= listExercise.size()) {
             return;
         }
+        System.out.println();
         Exercise selectedExercise = listExercise.get(count);
         System.out.println((count + 1) + ". " + "Name: " + selectedExercise.getName());
         System.out.println("Description: " + selectedExercise.getDescription());
@@ -312,6 +314,7 @@ public class AdminSystem {
         System.out.println("Reps: " + selectedExercise.getRepExercise());
         System.out.println("Time: " + selectedExercise.getSecondsExercise() + " Seconds");
         System.out.println("Calorie Burned: " + selectedExercise.getCalorieTotal());
+        System.out.println();
         showAllExercise(count + 1);
     }
 

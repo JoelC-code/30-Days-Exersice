@@ -42,6 +42,7 @@ public class ExerciseManager {
     }
 
     public void showingListWorkout(WorkoutPlan selectedDay, int day) {
+        System.out.println();
         if (selectedDay == null) {
             System.out.println("There's no workout planned in day " + day + "!");
         }
@@ -51,7 +52,9 @@ public class ExerciseManager {
         for (int i = 0; i < arraySize; i++) {
             Exercise selectedExercise = selectedDay.getExerciseAt(i);
             System.out.println((1 + i) + ". " + selectedExercise.getName());
+        
         }
+        System.out.println();
         }
     }
 
@@ -59,24 +62,26 @@ public class ExerciseManager {
         WorkoutCalender wc = new WorkoutCalender();
         wc.setDate(null);
         int today = wc.getDay();
-        System.out.println(today);
         showingListWorkout(logUser.returnExerciseBasedOnDay(today), today);
+        System.out.println();
     }
 
     public void viewAllExercise() {
+        System.out.println();
         if (logUser.getExerciseList().isEmpty()) {
             System.out.println("No exercises in the workout plan.");
         } else {
             System.out.println("Your workout plan:");
             printExerciseRecursive(0);
         }
+        System.out.println();
     }
 
     private void printExerciseRecursive(int index) {
         if (index >= logUser.getExerciseList().size()) {
             return;
         }
-        System.out.println((index + 1) + ". " + logUser.getExerciseList().get(index).getName());
+        System.out.println((index + 1) + ". " + logUser.getExerciseList().get(index).getName()+" ["+logUser.getExerciseList().get(index).getIntensityCategory()+"]");
         printExerciseRecursive(index + 1);
     }
 }
