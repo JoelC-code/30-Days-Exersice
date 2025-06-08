@@ -48,10 +48,7 @@ public class WorkoutPlan {
         return exerciseList.size();
     }
 
-    public int getMaxTotal() {
-        return maxTotal;
-    }
-    public void setMaxTotal(int maxTotal) {
-        this.maxTotal = maxTotal;
+    public String getExerciseAt(int index){
+        return exerciseList.get(index).getName();
     }
 }
