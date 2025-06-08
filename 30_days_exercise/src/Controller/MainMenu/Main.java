@@ -23,7 +23,7 @@ public class Main {
         listExercises = new LinkedList<>();
 
         listAccounts.add(new Admin("Abdus", "12345678", "Admin"));
-        listAccounts.add(new Users("A", "2", "Users"));
+        listAccounts.add(new Users("Salamm", "123"));
 
       listAccounts.add(new Users("A", "2"));
         listExercises.add(new Exercise("Push Up", 30, 10, 5, 30, "Push Up"));

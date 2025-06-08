@@ -20,7 +20,8 @@ public class Users extends Account {
 
     private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
 
-    public Users(String username, String password, String name, int age, String gender, double height, double weight,boolean firstLogin, WorkoutPlan[] workoutPlans) {
+    public Users(String username, String password, String name, int age, String gender, double height, double weight,
+            boolean firstLogin, WorkoutPlan[] workoutPlans) {
         super(username, password);
         this.name = name;
         this.age = age;
@@ -129,29 +130,34 @@ public class Users extends Account {
                     allExercises.addAll(plan.getExerciseList());
                 }
             }
+        }
+        return allExercises;
+    }
+
     public void createExercise(int totalExercise, LinkedList<Exercise> allExercises) {
         Random rand = new Random();
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             WorkoutPlan plan = new WorkoutPlan(totalExercise);
 
             boolean hasLight = false;
             boolean hasModerate = false;
             boolean hasHeavy = false;
 
-            while(plan.sizeList() < totalExercise) {
+            while (plan.sizeList() < totalExercise) {
                 Exercise selectedExercise = allExercises.get(rand.nextInt(allExercises.size()));
 
                 boolean notDuplicate = true;
                 for (Exercise e : plan.getExerciseList()) {
-                    if(e.getID() == selectedExercise.getID()) {
+                    if (e.getID() == selectedExercise.getID()) {
                         notDuplicate = false;
                     }
                 }
-                if(notDuplicate) continue;
+                if (notDuplicate)
+                    continue;
 
                 String intensity = selectedExercise.getIntensityCategory().toLowerCase();
 
-                if(!hasLight && intensity.equals("light")) {
+                if (!hasLight && intensity.equals("light")) {
                     plan.addWorkout(selectedExercise);
                     hasLight = true;
                 } else if (!hasModerate && intensity.equals("moderate")) {
@@ -166,6 +172,5 @@ public class Users extends Account {
             }
             weeklyPlans[i] = plan;
         }
-        return allExercises;
     }
 }
