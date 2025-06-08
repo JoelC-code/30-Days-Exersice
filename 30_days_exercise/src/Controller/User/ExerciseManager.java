@@ -37,21 +37,30 @@ public class ExerciseManager {
                 System.out.println("Invalid input, please try again!");
             }
         }
-        WorkoutPlan selectedWorkoutDay = logUser.returnExerciseBasedOnDay(selectedDay - 1);
+        WorkoutPlan selectedWorkoutDay = logUser.returnExerciseBasedOnDay(selectedDay);
         showingListWorkout(selectedWorkoutDay, selectedDay);
     }
 
     public void showingListWorkout(WorkoutPlan selectedDay, int day) {
-        System.out.println("Upcoming exercise on day "+day);
+        if (selectedDay == null) {
+            System.out.println("There's no workout planned in day " + day + "!");
+        }
+        else{
+        System.out.println("Exercise on day " + day);
         int arraySize = selectedDay.sizeList();
-        for(int i = 0; i < arraySize; i++) {
+        for (int i = 0; i < arraySize; i++) {
             Exercise selectedExercise = selectedDay.getExerciseAt(i);
-            System.out.println((1+i)+". "+selectedExercise.getName());
+            System.out.println((1 + i) + ". " + selectedExercise.getName());
+        }
         }
     }
 
     public void viewToday() {
-
+        WorkoutCalender wc = new WorkoutCalender();
+        wc.setDate(null);
+        int today = wc.getDay();
+        System.out.println(today);
+        showingListWorkout(logUser.returnExerciseBasedOnDay(today), today);
     }
 
     public void viewAllExercise() {

@@ -15,12 +15,11 @@ public class Users extends Account {
     private boolean firstLogin;
     private int totalOlahraga;
     private int exerciseException;
-    private WorkoutPlan[] workoutPlans;
     private LinkedList<Exercise> listExercises;
+    private WorkoutPlan[] workoutPlans = new WorkoutPlan[7];
 
-    private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
-
-    public Users(String username, String password, String name, int age, String gender, double height, double weight, boolean firstLogin, WorkoutPlan[] workoutPlans) {
+    public Users(String username, String password, String name, int age, String gender, double height, double weight,
+            boolean firstLogin, WorkoutPlan[] workoutPlans) {
         super(username, password);
         this.name = name;
         this.age = age;
@@ -58,6 +57,10 @@ public class Users extends Account {
         this.age = age;
     }
 
+    public int getTotalOlahraga() {
+        return totalOlahraga;
+    }
+
     public int getAge() {
         return age;
     }
@@ -87,7 +90,6 @@ public class Users extends Account {
     }
 
     public void setRoleName(String roleName) {
-        this.roleName = "Users";
         this.roleName = "User";
     }
 
@@ -126,7 +128,6 @@ public class Users extends Account {
         }
         return allExercises;
     }
-
 
     public void createExercise(int totalExercise, LinkedList<Exercise> allExercises) {
         Random rand = new Random();
@@ -187,13 +188,16 @@ public class Users extends Account {
                 if (used.size() == allExercises.size())
                     break;
             }
-            weeklyPlans[i] = plan;
+            workoutPlans[i] = plan;
         }
     }
 
     public WorkoutPlan returnExerciseBasedOnDay(int selectedDay) {
-        System.out.println();
-        WorkoutPlan todayPlan = weeklyPlans[selectedDay % 7];
+        int index = (selectedDay % 7) - 1;
+        if (index < 0){
+            index = 6;
+        }
+        WorkoutPlan todayPlan = workoutPlans[index];
         return todayPlan;
     }
 }

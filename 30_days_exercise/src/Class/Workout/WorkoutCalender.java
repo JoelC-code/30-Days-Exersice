@@ -25,6 +25,10 @@ public class WorkoutCalender extends CalenderBase {
         return "Today is: " + day;
     }
 
+    public int getDay(){
+        return day;
+    }
+
     public void displayDaysInMonth() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.MONTH, monthIndex);
