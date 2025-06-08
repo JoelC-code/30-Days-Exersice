@@ -16,29 +16,25 @@ public class UserPage {
 
     public void mainMenu() {
         ExerciseManager toManager = new ExerciseManager(loginUser);
-        int menuSelected = 0;
-        boolean isValid = false;
-        while (!isValid) {
+        int menuSelected = -1;
+        System.out.println("=-=-= Welcome, " + loginUser.getUsername() + " =-=-=");
+        while (menuSelected != 0) {
             try {
-                System.out.println("=-=-= Welcome, " + loginUser.getUsername() + " =-=-=");
                 System.out.println("1. View Calender");
-                System.out.println("2. View todays's exercise");
-                System.out.println("3. ViewAllExercise");
-                System.out.println("4. Logout");
+                System.out.println("2. View today's exercise");
+                System.out.println("3. View All Exercise");
+                System.out.println("0. Logout");
                 System.out.print("> ");
                 menuSelected = scan.nextInt();
                 scan.nextLine();
-                if (menuSelected >= 1 && menuSelected <= 4) {
-                    isValid = true;
-                } else {
+                if (menuSelected < 1 && menuSelected > 3) {
                     System.out.println("Invalid menu selection, please try again!");
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again!");
                 scan.nextLine();
-            }
-        }
-        switch (menuSelected) {
+            } 
+            switch (menuSelected) {
             case 1:
                 toManager.viewCalender();
                 break;
@@ -53,6 +49,7 @@ public class UserPage {
                 toMainMenu.openingMenu();
                 break;
         }
-    }
+        }
 
+    }
 }
