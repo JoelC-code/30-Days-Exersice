@@ -45,8 +45,4 @@ public class WorkoutPlan {
     public int sizeList() {
         return exerciseList.size();
     }
-
-    public String getExerciseAt(int index){
-        return exerciseList.get(index).getName();
-    }
 }
