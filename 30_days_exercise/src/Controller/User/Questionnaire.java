@@ -29,7 +29,7 @@ public class Questionnaire {
                 System.out.println("You must have a username!");
             }
         }
-        logUser.setRoleName(name);
+        logUser.setUsername(name);
         while (age <= 0) {
             try {
                 System.out.print("Age: ");

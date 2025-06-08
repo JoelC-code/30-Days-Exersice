@@ -16,6 +16,7 @@ public class Main {
     private LinkedList<Exercise> listExercisesTemp;
     private WorkoutPlan[] workoutPlanTemp;
 
+
     public Main() {
         scan = new Scanner(System.in);
         listAccounts = new ArrayList<>();
@@ -24,6 +25,7 @@ public class Main {
         listAccounts.add(new Admin("Abdus", "12345678", "Admin"));
         listAccounts.add(new Users("A", "2", "Users"));
 
+      listAccounts.add(new Users("A", "2"));
         listExercises.add(new Exercise("Push Up", 30, 10, 5, 30, "Push Up"));
         listExercises.add(new Exercise("Sit Up", 25, 15, 8, 30, "Sit Up"));
         listExercises.add(new Exercise("Pull Up", 40, 5, 10, 30, "Pull Up"));
