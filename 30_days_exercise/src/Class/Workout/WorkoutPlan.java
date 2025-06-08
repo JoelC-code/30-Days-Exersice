@@ -45,4 +45,8 @@ public class WorkoutPlan {
     public int sizeList() {
         return exerciseList.size();
     }
+
+    public LinkedList<Exercise> getExerciseList(){
+        return exerciseList;
+    }
 }

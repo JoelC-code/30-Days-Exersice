@@ -6,6 +6,7 @@ import Class.ExerciseMove.Exercise;
 import Class.Workout.WorkoutPlan;
 
 public class Users extends Account {
+    private String name;
     private int age;
     private String gender;
     private double height, weight;
@@ -14,8 +15,10 @@ public class Users extends Account {
     private WorkoutPlan workoutPlan;
     private int totalOlahraga;
 
-    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int totalOlahraga) {
+    public Users(String username, String password, String name, int age, String gender, double height, double weight,
+            boolean firstLogin, int totalOlahraga, WorkoutPlan workoutPlan) {
         super(username, password);
+        this.name = name;
         this.age = age;
         this.gender = gender;
         this.height = height;
@@ -23,10 +26,12 @@ public class Users extends Account {
         this.firstLogin = firstLogin;
         this.roleName = "User";
         this.totalOlahraga = totalOlahraga;
+        this.workoutPlan = workoutPlan;
     }
 
     public Users(String username, String password, String roleName) {
         super(username, password);
+        this.name = "John Doe";
         this.age = 0;
         this.gender = "Non-Binary";
         this.height = 0;
@@ -34,6 +39,14 @@ public class Users extends Account {
         this.firstLogin = true;
         this.roleName = roleName;
         this.totalOlahraga = 0;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public void setAge(int age) {
@@ -67,9 +80,9 @@ public class Users extends Account {
     public void setWeight(double weight) {
         this.weight = weight;
     }
-    
+
     public void setRoleName(String roleName) {
-        this.roleName = "Admin";
+        this.roleName = "Users";
     }
 
     public String getRoleName() {
@@ -87,7 +100,12 @@ public class Users extends Account {
     public int getTotalOlahraga() {
         return totalOlahraga;
     }
+
     public void setTotalOlahraga(int totalOlahraga) {
         this.totalOlahraga = totalOlahraga;
+    }
+
+    public LinkedList<Exercise> getExerciseList() {
+        return workoutPlan.getExerciseList();
     }
 }
