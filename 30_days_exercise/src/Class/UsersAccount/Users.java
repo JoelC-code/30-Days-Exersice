@@ -20,8 +20,7 @@ public class Users extends Account {
 
     private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
 
-    public Users(String username, String password, String name, int age, String gender, double height, double weight,
-            boolean firstLogin, WorkoutPlan[] workoutPlans) {
+    public Users(String username, String password, String name, int age, String gender, double height, double weight, boolean firstLogin, WorkoutPlan[] workoutPlans) {
         super(username, password);
         this.name = name;
         this.age = age;
@@ -86,7 +85,7 @@ public class Users extends Account {
     public void setWeight(double weight) {
         this.weight = weight;
     }
-
+    
     public void setRoleName(String roleName) {
         this.roleName = "Users";
         this.roleName = "User";
@@ -171,6 +170,15 @@ public class Users extends Account {
                 }
             }
             weeklyPlans[i] = plan;
+        }
+    }
+
+    public void returnExerciseBasedOnDay(int selectedDay) {
+        WorkoutPlan todayPlan = weeklyPlans[selectedDay % 7];
+        int arraySize = todayPlan.sizeList();
+        for(int i = 0; i < arraySize; i++) {
+            Exercise exerciseSelected = todayPlan.getExerciseAt(i);
+            System.out.println((1+i)+". "+exerciseSelected.getName());
         }
     }
 }
