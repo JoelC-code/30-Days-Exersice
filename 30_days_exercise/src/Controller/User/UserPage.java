@@ -16,43 +16,37 @@ public class UserPage {
 
     public void mainMenu() {
         ExerciseManager toManager = new ExerciseManager(loginUser);
-        int menuSelected = 0;
-        boolean isValid = false;
-        while (!isValid) {
-            try {
-                System.out.println("=-=-= Welcome, " + loginUser.getUsername() + " =-=-=");
-                System.out.println("1. View Calender");
-                System.out.println("2. View todays's exercise");
-                System.out.println("3. ViewAllExercise");
-                System.out.println("4. Logout");
-                System.out.print("> ");
-                menuSelected = scan.nextInt();
-                scan.nextLine();
-                if (menuSelected >= 1 && menuSelected <= 4) {
-                    isValid = true;
-                } else {
-                    System.out.println("Invalid menu selection, please try again!");
-                }
-            } catch (Exception e) {
-                System.out.println("Invalid input, please try again!");
-                scan.nextLine();
+        System.out.println("=-=-= Welcome, " + loginUser.getName() + " =-=-=");
+
+        int menuSelected = -1;
+        while (menuSelected != 0) {
+            System.out.println("1. View Calender");
+            System.out.println("2. View todays's exercise");
+            System.out.println("3. View All Exercise");
+            System.out.println("0. Logout");
+            System.out.print("> ");
+            menuSelected = scan.nextInt();
+            scan.nextLine();
+            if (menuSelected < 1 && menuSelected > 4) {
+                System.out.println("Invalid menu selection, please try again!");
+            }
+            switch (menuSelected) {
+                case 1:
+                    toManager.viewCalender();
+                    break;
+                case 2:
+                    toManager.viewToday();
+                    break;
+                case 3:
+                    toManager.viewAllExercise();
+                    break;
+                case 4:
+                    Main toMainMenu = new Main();
+                    toMainMenu.openingMenu();
+                    break;
             }
         }
-        switch (menuSelected) {
-            case 1:
-                toManager.viewCalender();
-                break;
-            case 2:
-                toManager.viewToday();
-                break;
-            case 3:
-                toManager.viewAllExercise();
-                break;
-            case 4:
-                Main toMainMenu = new Main();
-                toMainMenu.openingMenu();
-                break;
-        }
+
     }
 
 }

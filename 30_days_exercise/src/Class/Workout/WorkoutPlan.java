@@ -17,7 +17,11 @@ public class WorkoutPlan {
     }
 
     public WorkoutPlan(int maxTotal) {
-        this.exerciseList = new LinkedList<>();
+        this.maxTotal = maxTotal;
+    }
+
+    public WorkoutPlan(LinkedList<Exercise> exerciseList, int maxTotal) {
+        this.exerciseList = exerciseList;
         this.maxTotal = maxTotal;
     }
 
@@ -56,7 +60,7 @@ public class WorkoutPlan {
         return exerciseList.size();
     }
 
-    public LinkedList<Exercise> getExerciseList() {
+    public LinkedList<Exercise> getExerciseList(){
         return exerciseList;
     }
 }

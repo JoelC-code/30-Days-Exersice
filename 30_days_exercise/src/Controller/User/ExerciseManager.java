@@ -26,7 +26,7 @@ public class ExerciseManager {
             try {
                 System.out.println("Day you want to check:");
                 selectedDay = scan.nextInt();
-                if(selectedDay <= 30) {
+                if (selectedDay <= 30) {
                     isValid = true;
                 } else {
                     System.out.println("Day selected doesn't exist, please try again!");
@@ -35,7 +35,7 @@ public class ExerciseManager {
                 System.out.println("Invalid input, please try again!");
             }
         }
-        //logic untuk nunjukin exercise terus keluar
+        // logic untuk nunjukin exercise terus keluar
     }
 
     public void viewToday() {
@@ -43,6 +43,19 @@ public class ExerciseManager {
     }
 
     public void viewAllExercise() {
-        
+        if (logUser.getExerciseList().isEmpty()) {
+            System.out.println("No exercises in the workout plan.");
+        } else {
+            System.out.println("Your workout plan:");
+            printExerciseRecursive(0);
+        }
+    }
+
+    private void printExerciseRecursive(int index) {
+        if (index >= logUser.getExerciseList().size()) {
+            return;
+        }
+        System.out.println((index + 1) + ". " + logUser.getExerciseList().get(index).getName());
+        printExerciseRecursive(index + 1);
     }
 }
