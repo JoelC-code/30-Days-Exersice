@@ -20,8 +20,7 @@ public class Users extends Account {
 
     private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
 
-    public Users(String username, String password, String name, int age, String gender, double height, double weight,
-            boolean firstLogin, WorkoutPlan[] workoutPlans) {
+    public Users(String username, String password, String name, int age, String gender, double height, double weight, boolean firstLogin, WorkoutPlan[] workoutPlans) {
         super(username, password);
         this.name = name;
         this.age = age;
@@ -127,6 +126,7 @@ public class Users extends Account {
         }
         return allExercises;
     }
+
 
     public void createExercise(int totalExercise, LinkedList<Exercise> allExercises) {
         Random rand = new Random();
