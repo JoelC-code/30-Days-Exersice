@@ -6,13 +6,9 @@ import Class.ExerciseMove.Exercise;
 
 public class WorkoutPlan {
     private LinkedList<Exercise> exerciseList = new LinkedList<>();
-    private int selectedDay;
-    private boolean isDone;
 
     public WorkoutPlan(int selectedDay, LinkedList<Exercise> exerciseList, boolean isDone) {
         this.exerciseList = exerciseList;
-        this.selectedDay = selectedDay;
-        this.isDone = isDone;
     }
 
 
@@ -48,19 +44,5 @@ public class WorkoutPlan {
 
     public int sizeList() {
         return exerciseList.size();
-    }
-
-    public int getSelectedDay() {
-        return selectedDay;
-    }
-    public void setSelectedDay(int selectedDay) {
-        this.selectedDay = selectedDay;
-    }
-
-    public boolean isDone() {
-        return isDone;
-    }
-    public void setDone(boolean isDone) {
-        this.isDone = isDone;
     }
 }

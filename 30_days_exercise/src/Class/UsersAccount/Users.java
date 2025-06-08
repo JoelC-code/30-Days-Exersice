@@ -12,8 +12,9 @@ public class Users extends Account {
     private String roleName;
     private boolean firstLogin;
     private WorkoutPlan workoutPlan;
+    private int totalOlahraga;
 
-    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin) {
+    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int totalOlahraga) {
         super(username, password);
         this.age = age;
         this.gender = gender;
@@ -21,6 +22,7 @@ public class Users extends Account {
         this.weight = weight;
         this.firstLogin = firstLogin;
         this.roleName = "User";
+        this.totalOlahraga = totalOlahraga;
     }
 
     public Users(String username, String password, String roleName) {
@@ -31,6 +33,7 @@ public class Users extends Account {
         this.weight = 0;
         this.firstLogin = true;
         this.roleName = roleName;
+        this.totalOlahraga = 0;
     }
 
     public void setAge(int age) {
@@ -81,13 +84,10 @@ public class Users extends Account {
         this.firstLogin = firstLogin;
     }
 
-    public void assignExercise(LinkedList<Exercise> selectedExercises) {
-        if (workoutPlan == null) {
-            workoutPlan = new WorkoutPlan(1, selectedExercises, false);
-        } else {
-            for (Exercise e : selectedExercises) {
-                workoutPlan.addWorkout(e);
-            }
-        }
+    public int getTotalOlahraga() {
+        return totalOlahraga;
+    }
+    public void setTotalOlahraga(int totalOlahraga) {
+        this.totalOlahraga = totalOlahraga;
     }
 }
