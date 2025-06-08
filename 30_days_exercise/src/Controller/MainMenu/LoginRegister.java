@@ -74,7 +74,7 @@ public class LoginRegister {
                     UserPage toUserPage = new UserPage(selectedUser);
                     toUserPage.mainMenu();
                 } else {
-                    Questionnaire toQuestionnaire = new Questionnaire(selectedUser);
+                    Questionnaire toQuestionnaire = new Questionnaire(selectedUser ,listExercises);
                     toQuestionnaire.askingSection();
                 }
             }

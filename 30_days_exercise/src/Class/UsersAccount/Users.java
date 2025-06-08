@@ -21,7 +21,7 @@ public class Users extends Account {
     private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
 
     public Users(String username, String password, String name, int age, String gender, double height, double weight,
-           boolean firstLogin, WorkoutPlan[] workoutPlans) {
+            boolean firstLogin, WorkoutPlan[] workoutPlans) {
         super(username, password);
         this.name = name;
         this.age = age;
@@ -86,7 +86,7 @@ public class Users extends Account {
     public void setWeight(double weight) {
         this.weight = weight;
     }
-    
+
     public void setRoleName(String roleName) {
         this.roleName = "Users";
         this.roleName = "User";
@@ -116,12 +116,6 @@ public class Users extends Account {
         this.exerciseException = exerciseException;
     }
 
-    public void createExercise(int totalExercise) {
-        for (int i = 0; i < 7; i++) {
-            this.workoutPlans[i] = new WorkoutPlan(totalExercise);
-        }
-    }
-
     public LinkedList<Exercise> getExerciseList() {
         LinkedList<Exercise> allExercises = new LinkedList<>();
         if (workoutPlans != null) {
@@ -133,52 +127,73 @@ public class Users extends Account {
         }
         return allExercises;
     }
+
     public void createExercise(int totalExercise, LinkedList<Exercise> allExercises) {
         Random rand = new Random();
+
+        LinkedList<Exercise> lightList = new LinkedList<>();
+        LinkedList<Exercise> moderateList = new LinkedList<>();
+        LinkedList<Exercise> heavyList = new LinkedList<>();
+
+        for (Exercise ex : allExercises) {
+            String intensity = ex.getIntensityCategory().toLowerCase();
+            switch (intensity) {
+                case "light":
+                    lightList.add(ex);
+                    break;
+                case "moderate":
+                    moderateList.add(ex);
+                    break;
+                case "heavy":
+                    heavyList.add(ex);
+                    break;
+            }
+        }
+        System.out.println("DEBUG - Total exercises: " + allExercises.size());
+        System.out.println("Light: " + lightList.size());
+        System.out.println("Moderate: " + moderateList.size());
+        System.out.println("Heavy: " + heavyList.size());
+
+        if (lightList.isEmpty() || moderateList.isEmpty() || heavyList.isEmpty()) {
+            System.out
+                    .println("Error: Not enough exercise variety. Need at least one of each: Light, Moderate, Heavy.");
+            return;
+        }
         for (int i = 0; i < 7; i++) {
             WorkoutPlan plan = new WorkoutPlan(totalExercise);
-
-            boolean hasLight = false;
-            boolean hasModerate = false;
-            boolean hasHeavy = false;
-
+            LinkedList<Exercise> used = new LinkedList<>();
+            Exercise l = lightList.get(rand.nextInt(lightList.size()));
+            Exercise m = moderateList.get(rand.nextInt(moderateList.size()));
+            Exercise h = heavyList.get(rand.nextInt(heavyList.size()));
+            plan.addWorkout(l);
+            used.add(l);
+            plan.addWorkout(m);
+            used.add(m);
+            plan.addWorkout(h);
+            used.add(h);
             while (plan.sizeList() < totalExercise) {
-                Exercise selectedExercise = allExercises.get(rand.nextInt(allExercises.size()));
-
-                boolean notDuplicate = true;
-                for (Exercise e : plan.getExerciseList()) {
-                    if (e.getID() == selectedExercise.getID()) {
-                        notDuplicate = false;
+                Exercise selected = allExercises.get(rand.nextInt(allExercises.size()));
+                boolean duplicate = false;
+                for (Exercise e : used) {
+                    if (e.getID() == selected.getID()) {
+                        duplicate = true;
+                        break;
                     }
                 }
-                if (notDuplicate)
-                    continue;
-
-                String intensity = selectedExercise.getIntensityCategory().toLowerCase();
-
-                if (!hasLight && intensity.equals("light")) {
-                    plan.addWorkout(selectedExercise);
-                    hasLight = true;
-                } else if (!hasModerate && intensity.equals("moderate")) {
-                    plan.addWorkout(selectedExercise);
-                    hasModerate = true;
-                } else if (!hasHeavy && intensity.equals("heavy")) {
-                    plan.addWorkout(selectedExercise);
-                    hasHeavy = true;
-                } else if (hasLight && hasModerate & hasHeavy) {
-                    plan.addWorkout(selectedExercise);
+                if (!duplicate) {
+                    plan.addWorkout(selected);
+                    used.add(selected);
                 }
+                if (used.size() == allExercises.size())
+                    break;
             }
             weeklyPlans[i] = plan;
         }
     }
 
-    public void returnExerciseBasedOnDay(int selectedDay) {
+    public WorkoutPlan returnExerciseBasedOnDay(int selectedDay) {
+        System.out.println();
         WorkoutPlan todayPlan = weeklyPlans[selectedDay % 7];
-        int arraySize = todayPlan.sizeList();
-        for(int i = 0; i < arraySize; i++) {
-            Exercise exerciseSelected = todayPlan.getExerciseAt(i);
-            System.out.println((1+i)+". "+exerciseSelected.getName());
-        }
+        return todayPlan;
     }
 }

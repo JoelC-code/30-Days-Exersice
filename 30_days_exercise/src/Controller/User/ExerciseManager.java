@@ -2,8 +2,10 @@ package Controller.User;
 
 import java.util.Scanner;
 
+import Class.ExerciseMove.Exercise;
 import Class.UsersAccount.Users;
 import Class.Workout.WorkoutCalender;
+import Class.Workout.WorkoutPlan;
 
 public class ExerciseManager {
     private Users logUser;
@@ -11,7 +13,7 @@ public class ExerciseManager {
 
     public ExerciseManager(Users logUser) {
         this.logUser = logUser;
-        scan = new Scanner(System.in);
+        this.scan = new Scanner(System.in);
     }
 
     public void viewCalender() {
@@ -24,7 +26,7 @@ public class ExerciseManager {
         wc.displayDaysInMonth();
         while (!isValid) {
             try {
-                System.out.println("Day you want to check:");
+                System.out.println("\n\nDay you want to check:");
                 selectedDay = scan.nextInt();
                 if (selectedDay <= 30) {
                     isValid = true;
@@ -35,7 +37,17 @@ public class ExerciseManager {
                 System.out.println("Invalid input, please try again!");
             }
         }
-        // logic untuk nunjukin exercise terus keluar
+        WorkoutPlan selectedWorkoutDay = logUser.returnExerciseBasedOnDay(selectedDay - 1);
+        showingListWorkout(selectedWorkoutDay, selectedDay);
+    }
+
+    public void showingListWorkout(WorkoutPlan selectedDay, int day) {
+        System.out.println("Upcoming exercise on day "+day);
+        int arraySize = selectedDay.sizeList();
+        for(int i = 0; i < arraySize; i++) {
+            Exercise selectedExercise = selectedDay.getExerciseAt(i);
+            System.out.println((1+i)+". "+selectedExercise.getName());
+        }
     }
 
     public void viewToday() {
