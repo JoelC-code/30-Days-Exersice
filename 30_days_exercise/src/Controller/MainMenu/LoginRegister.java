@@ -125,7 +125,7 @@ public class LoginRegister {
                 scan.nextLine();
             }
         } while (!isValid);
-        listAccounts.add(new Users(newUsernameAccount, newPasswordAccount, "User"));
+        listAccounts.add(new Users(newUsernameAccount, newPasswordAccount));
         System.out.println("\n=-=- Account has been made! -=-=\n");
         return;
     }

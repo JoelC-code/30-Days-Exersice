@@ -1,6 +1,7 @@
 package Class.UsersAccount;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 import Class.ExerciseMove.Exercise;
 import Class.Workout.WorkoutPlan;
@@ -13,7 +14,6 @@ public class Users extends Account {
     private boolean firstLogin;
     private int exerciseException;
     private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
-    private LinkedList<Exercise> listExercises = getListExercises();
 
     public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int exerciseException) {
         super(username, password);
@@ -26,14 +26,14 @@ public class Users extends Account {
         this.exerciseException = exerciseException;
     }
 
-    public Users(String username, String password, String roleName) {
+    public Users(String username, String password) {
         super(username, password);
         this.age = 0;
         this.gender = "Non-Binary";
         this.height = 0;
         this.weight = 0;
         this.firstLogin = true;
-        this.roleName = roleName;
+        this.roleName = "User";
         this.exerciseException = 2;
     }
 
@@ -70,7 +70,7 @@ public class Users extends Account {
     }
     
     public void setRoleName(String roleName) {
-        this.roleName = "Admin";
+        this.roleName = "User";
     }
 
     public String getRoleName() {
@@ -92,9 +92,42 @@ public class Users extends Account {
         this.exerciseException = exerciseException;
     }
 
-    public void createExercise(int totalExercise) {
+    public void createExercise(int totalExercise, LinkedList<Exercise> allExercises) {
+        Random rand = new Random();
         for(int i = 0; i < 7; i++) {
-            weeklyPlans[i] = new WorkoutPlan(totalExercise);
+            WorkoutPlan plan = new WorkoutPlan(totalExercise);
+
+            boolean hasLight = false;
+            boolean hasModerate = false;
+            boolean hasHeavy = false;
+
+            while(plan.sizeList() < totalExercise) {
+                Exercise selectedExercise = allExercises.get(rand.nextInt(allExercises.size()));
+
+                boolean notDuplicate = true;
+                for (Exercise e : plan.getExerciseList()) {
+                    if(e.getID() == selectedExercise.getID()) {
+                        notDuplicate = false;
+                    }
+                }
+                if(notDuplicate) continue;
+
+                String intensity = selectedExercise.getIntensityCategory().toLowerCase();
+
+                if(!hasLight && intensity.equals("light")) {
+                    plan.addWorkout(selectedExercise);
+                    hasLight = true;
+                } else if (!hasModerate && intensity.equals("moderate")) {
+                    plan.addWorkout(selectedExercise);
+                    hasModerate = true;
+                } else if (!hasHeavy && intensity.equals("heavy")) {
+                    plan.addWorkout(selectedExercise);
+                    hasHeavy = true;
+                } else if (hasLight && hasModerate & hasHeavy) {
+                    plan.addWorkout(selectedExercise);
+                }
+            }
+            weeklyPlans[i] = plan;
         }
     }
 }

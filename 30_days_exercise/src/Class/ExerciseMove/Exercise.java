@@ -66,6 +66,10 @@ public class Exercise {
         this.intensityCategory = calculateIntensityCategory();
     }
 
+    public String getIntensityCategory () {
+        return intensityCategory;
+    }
+
     public String calculateIntensityCategory() {
         int volumeTotal = this.repExercise * this.setExercise;
 
