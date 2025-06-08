@@ -56,6 +56,14 @@ public class WorkoutPlan {
         return exerciseList.size();
     }
 
+    public Exercise getExerciseAt(int index) {
+        if (index >= 0 && index < exerciseList.size()) {
+            return exerciseList.get(index);
+        } else {
+            return null;
+        }
+    }
+
     public LinkedList<Exercise> getExerciseList() {
         return exerciseList;
     }

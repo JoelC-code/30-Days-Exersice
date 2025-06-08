@@ -15,7 +15,8 @@ public class Users extends Account {
     private int exerciseException;
     private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
 
-    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int exerciseException) {
+    public Users(String username, String password, int age, String gender, double height, double weight,
+            boolean firstLogin, int exerciseException) {
         super(username, password);
         this.age = age;
         this.gender = gender;
@@ -68,7 +69,7 @@ public class Users extends Account {
     public void setWeight(double weight) {
         this.weight = weight;
     }
-    
+
     public void setRoleName(String roleName) {
         this.roleName = "User";
     }
@@ -88,33 +89,35 @@ public class Users extends Account {
     public int getExerciseException() {
         return exerciseException;
     }
+
     public void setExerciseException(int exerciseException) {
         this.exerciseException = exerciseException;
     }
 
     public void createExercise(int totalExercise, LinkedList<Exercise> allExercises) {
         Random rand = new Random();
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             WorkoutPlan plan = new WorkoutPlan(totalExercise);
 
             boolean hasLight = false;
             boolean hasModerate = false;
             boolean hasHeavy = false;
 
-            while(plan.sizeList() < totalExercise) {
+            while (plan.sizeList() < totalExercise) {
                 Exercise selectedExercise = allExercises.get(rand.nextInt(allExercises.size()));
 
                 boolean notDuplicate = true;
                 for (Exercise e : plan.getExerciseList()) {
-                    if(e.getID() == selectedExercise.getID()) {
+                    if (e.getID() == selectedExercise.getID()) {
                         notDuplicate = false;
                     }
                 }
-                if(notDuplicate) continue;
+                if (notDuplicate)
+                    continue;
 
                 String intensity = selectedExercise.getIntensityCategory().toLowerCase();
 
-                if(!hasLight && intensity.equals("light")) {
+                if (!hasLight && intensity.equals("light")) {
                     plan.addWorkout(selectedExercise);
                     hasLight = true;
                 } else if (!hasModerate && intensity.equals("moderate")) {
@@ -128,6 +131,15 @@ public class Users extends Account {
                 }
             }
             weeklyPlans[i] = plan;
+        }
+    }
+
+    public void returnExerciseBasedOnDay(int selectedDay) {
+        WorkoutPlan todayPlan = weeklyPlans[selectedDay % 7];
+        int arraySize = todayPlan.sizeList();
+        for(int i = 0; i < arraySize; i++) {
+            Exercise exerciseSelected = todayPlan.getExerciseAt(i);
+            System.out.println((1+i)+". "+exerciseSelected.getName());
         }
     }
 }
