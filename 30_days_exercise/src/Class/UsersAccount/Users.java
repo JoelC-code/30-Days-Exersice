@@ -14,7 +14,7 @@ public class Users extends Account {
     private WorkoutPlan workoutPlan;
     private int totalOlahraga;
 
-    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int totalOlahraga) {
+    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int totalOlahraga, WorkoutPlan workoutPlan) {
         super(username, password);
         this.age = age;
         this.gender = gender;
@@ -23,6 +23,7 @@ public class Users extends Account {
         this.firstLogin = firstLogin;
         this.roleName = "User";
         this.totalOlahraga = totalOlahraga;
+        this.workoutPlan = workoutPlan;
     }
 
     public Users(String username, String password, String roleName) {
@@ -89,5 +90,9 @@ public class Users extends Account {
     }
     public void setTotalOlahraga(int totalOlahraga) {
         this.totalOlahraga = totalOlahraga;
+    }
+
+    public WorkoutPlan getExerciseLists(){
+        return workoutPlan;
     }
 }

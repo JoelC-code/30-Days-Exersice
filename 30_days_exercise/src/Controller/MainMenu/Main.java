@@ -6,12 +6,15 @@ import Class.ExerciseMove.Exercise;
 import Class.UsersAccount.Account;
 import Class.UsersAccount.Admin;
 import Class.UsersAccount.Users;
+import Class.Workout.WorkoutPlan;
 
 public class Main {
     private Scanner scan;
     private LoginRegister systemLogin;
     private ArrayList<Account> listAccounts;
     private ArrayList<Exercise> listExercises;
+    private LinkedList<Exercise> listExercisesTemp;
+    private WorkoutPlan workoutPlanTemp;
 
     public Main() {
         scan = new Scanner(System.in);
@@ -19,7 +22,8 @@ public class Main {
         listExercises = new ArrayList<>();
 
         listAccounts.add(new Admin("Abdus", "12345678", "Admin"));
-        listAccounts.add(new Users("A", "2", "Users"));
+        listAccounts.add(new Users("A", "2", "User"));
+
         listExercises.add(new Exercise("Push Up", 30, 10, 5, 30, "Push Up"));
         listExercises.add(new Exercise("Sit Up", 25, 15, 8, 30, "Sit Up"));
         listExercises.add(new Exercise("Pull Up", 40, 5, 10, 30, "Pull Up"));
@@ -30,6 +34,13 @@ public class Main {
         listExercises.add(new Exercise("Dance", 25, 15, 8, 30, "Dance"));
         listExercises.add(new Exercise("Pull Down", 40, 5, 10, 30, "Pull Down"));
 
+        //temporary
+        listExercisesTemp = new LinkedList<>();
+        workoutPlanTemp = new WorkoutPlan(30, listExercisesTemp, false);
+        listExercisesTemp.add(listExercises.get(0));
+        listExercisesTemp.add(listExercises.get(1));
+        listExercisesTemp.add(listExercises.get(2));
+        listAccounts.add(new Users("Salam", "123", 12, "Male", 160, 80, false, 12, workoutPlanTemp));
         systemLogin = new LoginRegister(listAccounts, listExercises);
     }
 
@@ -42,6 +53,7 @@ public class Main {
                 System.out.println("1. Login");
                 System.out.println("2. Register");
                 System.out.println("3. Exit");
+                System.out.print("> ");
                 try {
                     choice = scan.nextInt();
                     scan.nextLine();
