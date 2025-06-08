@@ -10,12 +10,13 @@ import Controller.User.Questionnaire;
 import Controller.User.UserPage;
 
 import java.util.InputMismatchException;
+import java.util.LinkedList;
 
 public class LoginRegister {
     private Scanner scan;
     private ArrayList<Account> listAccounts;
-    private ArrayList<Exercise> listExercises;
-    public LoginRegister(ArrayList<Account> listAccounts, ArrayList<Exercise> listExercises) {
+    private LinkedList<Exercise> listExercises;
+    public LoginRegister(ArrayList<Account> listAccounts, LinkedList<Exercise> listExercises) {
         scan = new Scanner(System.in);
         this.listAccounts = listAccounts;
         this.listExercises = listExercises;

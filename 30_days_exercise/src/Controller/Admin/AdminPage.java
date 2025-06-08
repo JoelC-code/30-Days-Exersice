@@ -1,6 +1,7 @@
 package Controller.Admin;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import Class.ExerciseMove.Exercise;
@@ -11,9 +12,9 @@ public class AdminPage {
     private Scanner scan;
     private Admin logAdmin;
     private ArrayList<Account> listUser;
-    private ArrayList<Exercise> listExercises;
+    private LinkedList<Exercise> listExercises;
 
-    public AdminPage(Admin logAdmin, ArrayList<Account> listUser, ArrayList<Exercise> listExercises) {
+    public AdminPage(Admin logAdmin, ArrayList<Account> listUser, LinkedList<Exercise> listExercises) {
         scan = new Scanner(System.in);
         this.logAdmin = logAdmin;
         this.listUser = listUser;

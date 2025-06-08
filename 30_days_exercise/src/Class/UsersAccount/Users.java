@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import Class.ExerciseMove.Exercise;
 import Class.Workout.WorkoutPlan;
+import Controller.MainMenu.*;
 
 public class Users extends Account {
     private int age;
@@ -11,10 +12,11 @@ public class Users extends Account {
     private double height, weight;
     private String roleName;
     private boolean firstLogin;
-    private WorkoutPlan workoutPlan;
-    private int totalOlahraga;
+    private int exerciseException;
+    private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
+    private LinkedList<Exercise> listExercises;
 
-    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int totalOlahraga) {
+    public Users(String username, String password, int age, String gender, double height, double weight, boolean firstLogin, int exerciseException) {
         super(username, password);
         this.age = age;
         this.gender = gender;
@@ -22,7 +24,7 @@ public class Users extends Account {
         this.weight = weight;
         this.firstLogin = firstLogin;
         this.roleName = "User";
-        this.totalOlahraga = totalOlahraga;
+        this.exerciseException = exerciseException;
     }
 
     public Users(String username, String password, String roleName) {
@@ -33,7 +35,7 @@ public class Users extends Account {
         this.weight = 0;
         this.firstLogin = true;
         this.roleName = roleName;
-        this.totalOlahraga = 0;
+        this.exerciseException = 2;
     }
 
     public void setAge(int age) {
@@ -84,10 +86,16 @@ public class Users extends Account {
         this.firstLogin = firstLogin;
     }
 
-    public int getTotalOlahraga() {
-        return totalOlahraga;
+    public int getExerciseException() {
+        return exerciseException;
     }
-    public void setTotalOlahraga(int totalOlahraga) {
-        this.totalOlahraga = totalOlahraga;
+    public void setExerciseException(int exerciseException) {
+        this.exerciseException = exerciseException;
+    }
+
+    public void createExercise(int totalExercise) {
+        for(int i = 0; i < 7; i++) {
+            weeklyPlans[i] = new WorkoutPlan(totalExercise);
+        }
     }
 }

@@ -11,12 +11,12 @@ public class Main {
     private Scanner scan;
     private LoginRegister systemLogin;
     private ArrayList<Account> listAccounts;
-    private ArrayList<Exercise> listExercises;
+    private LinkedList<Exercise> listExercises;
 
     public Main() {
         scan = new Scanner(System.in);
         listAccounts = new ArrayList<>();
-        listExercises = new ArrayList<>();
+        listExercises = new LinkedList<>();
 
         listAccounts.add(new Admin("Abdus", "12345678", "Admin"));
         listAccounts.add(new Users("A", "2", "Users"));
@@ -69,6 +69,9 @@ public class Main {
                     System.exit(0);
             }
         }
+    }
 
+    public LinkedList<Exercise> getListExercises() {
+        return listExercises;
     }
 }
