@@ -14,7 +14,7 @@ public class AdminSystem {
     private LinkedList<Exercise> listExercise;
     private Scanner scan;
 
-    public AdminSystem(ArrayList<Account> listUserAccount, ArrayList<Exercise> listExercises) {
+    public AdminSystem(ArrayList<Account> listUserAccount, LinkedList<Exercise> listExercises) {
         this.listUserAccount = listUserAccount;
         this.listExercise = new LinkedList<>(listExercises);
         scan = new Scanner(System.in);

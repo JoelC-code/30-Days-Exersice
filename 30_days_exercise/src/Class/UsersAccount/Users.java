@@ -12,8 +12,9 @@ public class Users extends Account {
     private double height, weight;
     private String roleName;
     private boolean firstLogin;
-    private WorkoutPlan workoutPlan;
-    private int totalOlahraga;
+    private int exerciseException;
+    private WorkoutPlan[] weeklyPlans = new WorkoutPlan[7];
+    private LinkedList<Exercise> listExercises = getListExercises();
 
     public Users(String username, String password, String name, int age, String gender, double height, double weight,
             boolean firstLogin, int totalOlahraga, WorkoutPlan workoutPlan) {
@@ -38,7 +39,7 @@ public class Users extends Account {
         this.weight = 0;
         this.firstLogin = true;
         this.roleName = roleName;
-        this.totalOlahraga = 0;
+        this.exerciseException = 2;
     }
 
     public void setName(String name) {
@@ -97,12 +98,20 @@ public class Users extends Account {
         this.firstLogin = firstLogin;
     }
 
-    public int getTotalOlahraga() {
-        return totalOlahraga;
+    public int getExerciseException() {
+        return exerciseException;
     }
 
     public void setTotalOlahraga(int totalOlahraga) {
         this.totalOlahraga = totalOlahraga;
+    public void setExerciseException(int exerciseException) {
+        this.exerciseException = exerciseException;
+    }
+
+    public void createExercise(int totalExercise) {
+        for(int i = 0; i < 7; i++) {
+            weeklyPlans[i] = new WorkoutPlan(totalExercise);
+        }
     }
 
     public LinkedList<Exercise> getExerciseList() {

@@ -6,9 +6,11 @@ import Class.ExerciseMove.Exercise;
 
 public class WorkoutPlan {
     private LinkedList<Exercise> exerciseList = new LinkedList<>();
+    private int maxTotal;
 
-    public WorkoutPlan(int selectedDay, LinkedList<Exercise> exerciseList, boolean isDone) {
-        this.exerciseList = exerciseList;
+    public WorkoutPlan(int maxTotal) {
+        this.exerciseList = new LinkedList<>();
+        this.maxTotal = maxTotal;
     }
 
 
