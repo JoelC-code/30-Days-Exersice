@@ -39,12 +39,15 @@ public class ExerciseManager {
         }
         System.out.println();
         WorkoutPlan selectedWorkoutDay = logUser.returnExerciseBasedOnDay(selectedDay);
-        showingListWorkout(selectedWorkoutDay, selectedDay);
+        showingListWorkout(selectedWorkoutDay, selectedDay, true);
+        System.out.println();
     }
 
-    public boolean showingListWorkout(WorkoutPlan selectedDay, int day) {
+    public boolean showingListWorkout(WorkoutPlan selectedDay, int day, boolean showEmptyMessage) {
         if (selectedDay == null || selectedDay.isEmpty()) {
-            System.out.println("There's no workout planned in day " + day + "!");
+            if (showEmptyMessage) {
+                System.out.println("There's no workout planned in day " + day + "!");
+            }
             return false;
         } else {
             System.out.println("Exercise on day " + day);
@@ -62,28 +65,38 @@ public class ExerciseManager {
         wc.setDate(null);
         int today = wc.getDay();
 
-        System.out.println(today);
         WorkoutPlan workoutToday = logUser.getWorkoutToday();
+
+        if (workoutToday == null || workoutToday.isEmpty()) {
+            System.out.println("No workout remaining for today. Returning...");
+            return;
+        }
+
+        showingListWorkout(workoutToday, today, false);
 
         int options = -1;
         while (options != 0) {
-            if (!showingListWorkout(workoutToday, today)) {
-                System.out.println("No workout for today. Returning...");
-                break;
-            }
-            
             System.out.println();
             System.out.println("What are you going to do today?");
             System.out.println("1. Doing a workout");
             System.out.println("2. Resting for the day");
             System.out.println("0. Go back");
             System.out.print("> ");
-            options = scan.nextInt();
+
+            try {
+                options = scan.nextInt();
+            } catch (Exception e) {
+                System.out.println("Invalid input, try again!");
+                scan.nextLine();
+                continue;
+            }
+
+            System.out.println();
 
             switch (options) {
                 case 0:
                     System.out.println("Going back...");
-                    break;
+                    return;
 
                 case 1:
                     System.out.println("Your exercise is done!");
@@ -97,17 +110,16 @@ public class ExerciseManager {
 
                 default:
                     System.out.println("Invalid input, try again!");
-                    break;
+                    continue;
             }
-            if (workoutToday.isEmpty()) {
+
+            if (!workoutToday.isEmpty()) {
+                showingListWorkout(workoutToday, today, false);
+            } else {
                 System.out.println("No workout remaining for today. Returning...");
                 break;
             }
         }
-
-        showingListWorkout(logUser.returnExerciseBasedOnDay(today), today);
-        System.out.println();
-
     }
 
     public void viewAllExercise() {
@@ -124,8 +136,10 @@ public class ExerciseManager {
     private void printExerciseRecursive(int index) {
         if (index >= logUser.getExerciseList().size()) {
             return;
+
         }
-        System.out.println((index + 1) + ". " + logUser.getExerciseList().get(index).getName()+" ["+logUser.getExerciseList().get(index).getIntensityCategory()+"]");
+        System.out.println((index + 1) + ". " + logUser.getExerciseList().get(index).getName() + " ["
+                + logUser.getExerciseList().get(index).getIntensityCategory() + "]");
         printExerciseRecursive(index + 1);
     }
 }
