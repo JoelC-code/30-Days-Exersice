@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import Class.ExerciseMove.Exercise;
+import Class.Workout.WorkoutCalender;
 import Class.Workout.WorkoutPlan;
 
 public class Users extends Account {
@@ -17,10 +18,13 @@ public class Users extends Account {
     private int exerciseException;
     private LinkedList<Exercise> listExercises;
     private WorkoutPlan[] workoutPlans = new WorkoutPlan[7];
+    private WorkoutPlan workoutToday;
+    protected WorkoutCalender calendar = new WorkoutCalender();
 
     public Users(String username, String password, String name, int age, String gender, double height, double weight,
             boolean firstLogin, WorkoutPlan[] workoutPlans) {
         super(username, password);
+        calendar.setDate(null);
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -31,6 +35,12 @@ public class Users extends Account {
         this.workoutPlans = workoutPlans;
         this.listExercises = getExerciseList();
         this.totalOlahraga = listExercises.size();
+        int today = calendar.getDayOfWeek();
+        if (workoutPlans[today] != null) {
+            this.workoutToday = new WorkoutPlan(workoutPlans[today].getExerciseList());
+        } else {
+            this.workoutToday = new WorkoutPlan(null);
+        }
     }
 
     public Users(String username, String password) {
@@ -99,6 +109,10 @@ public class Users extends Account {
 
     public boolean getFirstLogin() {
         return firstLogin;
+    }
+
+    public WorkoutPlan getWorkoutToday() {
+        return workoutToday;
     }
 
     public void setFirstLogin(boolean firstLogin) {
@@ -190,7 +204,7 @@ public class Users extends Account {
 
     public WorkoutPlan returnExerciseBasedOnDay(int selectedDay) {
         int index = (selectedDay % 7) - 1;
-        if (index < 0){
+        if (index < 0) {
             index = 6;
         }
         WorkoutPlan todayPlan = workoutPlans[index];

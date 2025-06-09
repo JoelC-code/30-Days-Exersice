@@ -12,7 +12,7 @@ public class WorkoutCalender extends CalenderBase {
 
     @Override
     public void setDate(Calendar calendar) {
-        Calendar now = Calendar.getInstance(); 
+        Calendar now = Calendar.getInstance();
         this.day = now.get(Calendar.DAY_OF_MONTH);
         this.week = now.get(Calendar.WEEK_OF_YEAR);
         this.monthIndex = now.get(Calendar.MONTH);
@@ -25,8 +25,12 @@ public class WorkoutCalender extends CalenderBase {
         return "Today is: " + day;
     }
 
-    public int getDay(){
+    public int getDay() {
         return day;
+    }
+
+    public int getDayOfWeek() {
+        return ((day - 1) % 7);
     }
 
     public void displayDaysInMonth() {
@@ -36,9 +40,11 @@ public class WorkoutCalender extends CalenderBase {
 
         System.out.println("Days :");
         for (int i = 1; i <= 30; i++) {
-            if(i % 7 != 0) {
-                if(i < 10) System.out.print(i+"  ");
-                else System.out.print(i+" ");
+            if (i % 7 != 0) {
+                if (i < 10)
+                    System.out.print(i + "  ");
+                else
+                    System.out.print(i + " ");
             } else {
                 System.out.println();
                 System.out.println();

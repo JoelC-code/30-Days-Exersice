@@ -3,6 +3,7 @@ package Class.Workout;
 import java.util.LinkedList;
 
 import Class.ExerciseMove.Exercise;
+import Class.UsersAccount.Users;
 
 public class WorkoutPlan {
     private LinkedList<Exercise> exerciseList = new LinkedList<>();
@@ -12,25 +13,23 @@ public class WorkoutPlan {
         return maxTotal;
     }
 
-    public void setMaxTotal(int maxTotal) {
-        this.maxTotal = maxTotal;
+    public void setMaxTotal(Users user) {
+        this.maxTotal = user.getTotalOlahraga();
     }
 
     public WorkoutPlan(int maxTotal) {
         this.maxTotal = maxTotal;
     }
 
-    public WorkoutPlan(LinkedList<Exercise> exerciseList, int maxTotal) {
+    public WorkoutPlan(LinkedList<Exercise> exerciseList) {
         this.exerciseList = exerciseList;
-        this.maxTotal = maxTotal;
     }
 
     public void addWorkout(Exercise newWorkout) {
         if (newWorkout instanceof Exercise) {
             exerciseList.add(newWorkout);
         } else {
-            throw new IllegalArgumentException(
-                    "Something went wrong. When you want to add a workout, call Customer Service (Err:WP-1)");
+            throw new IllegalArgumentException("Something went wrong. When you want to add a workout, call Customer Service (Err:WP-1)");
         }
     }
 
@@ -39,6 +38,17 @@ public class WorkoutPlan {
             return exerciseList.removeFirst();
         } else {
             System.out.println("Your exercise is done!");
+            return null;
+        }
+    }
+
+    public Exercise deleteAll(){
+        if (!exerciseList.isEmpty()) {
+            exerciseList.removeFirst();
+            return deleteAll();
+        }
+        else {
+            System.out.println("Selamat beristirahat!");
             return null;
         }
     }
