@@ -19,6 +19,7 @@ public class Exercise {
     }
 
     public Exercise(Exercise exercise) {
+        this.ID = exercise.ID;
         this.repExercise = exercise.repExercise;
         this.setExercise = exercise.setExercise;
         this.calorieTotal = exercise.calorieTotal;
@@ -101,6 +102,6 @@ public class Exercise {
     }
 
     public String toString() {
-        return getName()+" ["+getIntensityCategory()+"]";
+        return getName() + " [" + getIntensityCategory() + "]";
     }
 }
