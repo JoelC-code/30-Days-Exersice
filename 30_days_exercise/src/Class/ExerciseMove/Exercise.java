@@ -18,6 +18,16 @@ public class Exercise {
         this.Description = Description;
     }
 
+    public Exercise(Exercise exercise) {
+        this.repExercise = exercise.repExercise;
+        this.setExercise = exercise.setExercise;
+        this.calorieTotal = exercise.calorieTotal;
+        this.secondsExercise = exercise.secondsExercise;
+        this.name = exercise.name;
+        this.intensityCategory = exercise.intensityCategory;
+        this.Description = exercise.Description;
+    }
+
     public int getID() {
         return ID;
     }
@@ -66,7 +76,7 @@ public class Exercise {
         this.intensityCategory = calculateIntensityCategory();
     }
 
-    public String getIntensityCategory () {
+    public String getIntensityCategory() {
         return intensityCategory;
     }
 
