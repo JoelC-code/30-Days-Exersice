@@ -117,7 +117,7 @@ public class ExerciseManager {
             if (!workoutToday.isEmpty()) {
                 showingListWorkout(workoutToday, today, false);
             } else {
-                System.out.println("No workout remaining for day" + today + ". Returning...");
+                System.out.println("No workout remaining for day " + today + ". Returning...");
                 break;
             }
         }
