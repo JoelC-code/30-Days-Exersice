@@ -68,7 +68,7 @@ public class ExerciseManager {
 
         WorkoutPlan workoutToday = logUser.getWorkoutToday();
 
-        if (workoutToday == null || workoutToday.isEmpty()) {
+        if (workoutToday == null || workoutToday.isEmpty() || workoutToday.getExerciseList() == null) {
             System.out.println("No workout remaining for today. Returning...");
             return;
         }
@@ -115,7 +115,7 @@ public class ExerciseManager {
             }
 
             if (!workoutToday.isEmpty()) {
-                showingListWorkout(workoutToday, today);
+                showingListWorkout(workoutToday, today, false);
             } else {
                 System.out.println("No workout remaining for day" + today + ". Returning...");
                 break;
