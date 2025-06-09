@@ -37,14 +37,15 @@ public class ExerciseManager {
                 System.out.println("Invalid input, please try again!");
             }
         }
+        System.out.println();
         WorkoutPlan selectedWorkoutDay = logUser.returnExerciseBasedOnDay(selectedDay);
         showingListWorkout(selectedWorkoutDay, selectedDay);
     }
 
-    public void showingListWorkout(WorkoutPlan selectedDay, int day) {
-
+    public boolean showingListWorkout(WorkoutPlan selectedDay, int day) {
         if (selectedDay == null || selectedDay.isEmpty()) {
             System.out.println("There's no workout planned in day " + day + "!");
+            return false;
         } else {
             System.out.println("Exercise on day " + day);
             int arraySize = selectedDay.sizeList();
@@ -52,21 +53,7 @@ public class ExerciseManager {
                 Exercise selectedExercise = selectedDay.getExerciseAt(i);
                 System.out.println((1 + i) + ". " + selectedExercise.getName());
             }
-
-        System.out.println();
-        if (selectedDay == null) {
-            System.out.println("There's no workout planned in day " + day + "!");
-        }
-        else{
-        System.out.println("Exercise on day " + day);
-        int arraySize = selectedDay.sizeList();
-        for (int i = 0; i < arraySize; i++) {
-            Exercise selectedExercise = selectedDay.getExerciseAt(i);
-            System.out.println((1 + i) + ". " + selectedExercise.getName());
-        
-        }
-        System.out.println();
-
+            return true;
         }
     }
 
@@ -80,31 +67,41 @@ public class ExerciseManager {
 
         int options = -1;
         while (options != 0) {
+            if (!showingListWorkout(workoutToday, today)) {
+                System.out.println("No workout for today. Returning...");
+                break;
+            }
+            
             System.out.println();
-            showingListWorkout(workoutToday, today);
-            System.out.println("Apa yang ingin anda lakukan hari ini?");
-            System.out.println("1. Melakukan work-out");
-            System.out.println("2. Beristirahat untuk hari ini");
-            System.out.println("0. Kembali");
+            System.out.println("What are you going to do today?");
+            System.out.println("1. Doing a workout");
+            System.out.println("2. Resting for the day");
+            System.out.println("0. Go back");
             System.out.print("> ");
             options = scan.nextInt();
 
             switch (options) {
                 case 0:
-                    System.out.println("Kembali...");
+                    System.out.println("Going back...");
                     break;
 
                 case 1:
+                    System.out.println("Your exercise is done!");
                     workoutToday.deleteWorkout();
                     break;
 
                 case 2:
+                    System.out.println("Get a well resting!");
                     workoutToday.deleteAll();
                     break;
 
                 default:
                     System.out.println("Invalid input, try again!");
                     break;
+            }
+            if (workoutToday.isEmpty()) {
+                System.out.println("No workout remaining for today. Returning...");
+                break;
             }
         }
 

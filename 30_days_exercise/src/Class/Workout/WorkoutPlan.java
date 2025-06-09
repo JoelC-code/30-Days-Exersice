@@ -37,7 +37,6 @@ public class WorkoutPlan {
         if (!exerciseList.isEmpty()) {
             return exerciseList.removeFirst();
         } else {
-            System.out.println("Your exercise is done!");
             return null;
         }
     }
@@ -48,7 +47,6 @@ public class WorkoutPlan {
             return deleteAll();
         }
         else {
-            System.out.println("Selamat beristirahat!");
             return null;
         }
     }

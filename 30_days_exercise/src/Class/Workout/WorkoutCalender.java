@@ -40,12 +40,12 @@ public class WorkoutCalender extends CalenderBase {
 
         System.out.println("Days :");
         for (int i = 1; i <= 30; i++) {
-            if (i % 7 != 0) {
-                if (i < 10)
-                    System.out.print(i + "  ");
-                else
-                    System.out.print(i + " ");
-            } else {
+            if (i < 10)
+                System.out.print(i + "  ");
+            else
+                System.out.print(i + " ");
+
+            if (i % 7 == 0) {
                 System.out.println();
                 System.out.println();
             }

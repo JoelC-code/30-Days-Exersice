@@ -36,8 +36,12 @@ public class Users extends Account {
         this.listExercises = getExerciseList();
         this.totalOlahraga = listExercises.size();
         int today = calendar.getDayOfWeek();
-        if (workoutPlans[today] != null) {
-            this.workoutToday = new WorkoutPlan(workoutPlans[today].getExerciseList());
+        if (workoutPlans[today] != null && workoutPlans[today].getExerciseList() != null) {
+            LinkedList<Exercise> copiedList = new LinkedList<>();
+            for (Exercise e : workoutPlans[today].getExerciseList()) {
+                copiedList.add(new Exercise(e));
+            }
+            this.workoutToday = new WorkoutPlan(copiedList);
         } else {
             this.workoutToday = new WorkoutPlan(null);
         }
