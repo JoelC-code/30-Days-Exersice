@@ -15,6 +15,8 @@ public class Main {
     private ArrayList<Account> listAccounts;
     private LinkedList<Exercise> listExercises;
     private LinkedList<Exercise> listExercisesTemp;
+    private LinkedList<Exercise> listExercisesTemp2;
+
     private WorkoutPlan[] workoutPlanTemp;
 
     public Main() {
@@ -34,13 +36,17 @@ public class Main {
         listExercises.add(new Exercise("Pull Down", 40, 5, 10, 30, "Pull Down"));
 
         listExercisesTemp = new LinkedList<>();
+        listExercisesTemp2 = new LinkedList<>();
         listExercisesTemp.add(listExercises.get(0));
-        listExercisesTemp.add(listExercises.get(1));
+        listExercisesTemp2.add(listExercises.get(1));
         listExercisesTemp.add(listExercises.get(2));
-        listExercisesTemp.add(listExercises.get(3));
+        listExercisesTemp2.add(listExercises.get(3));
         listExercisesTemp.add(listExercises.get(4));
         workoutPlanTemp = new WorkoutPlan[7];
+
         workoutPlanTemp[1] = new WorkoutPlan(listExercisesTemp);
+        workoutPlanTemp[0] = new WorkoutPlan(listExercisesTemp, 0);
+        workoutPlanTemp[1] = new WorkoutPlan(listExercisesTemp2, 0);
         listAccounts.add(new Users("Salam", "1234", "Abdus Salam", 15, "Male", 160, 70, false, workoutPlanTemp));
 
         systemLogin = new LoginRegister(listAccounts, listExercises);
