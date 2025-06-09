@@ -1,5 +1,6 @@
 package Controller.User;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import Class.ExerciseMove.Exercise;
@@ -99,8 +100,11 @@ public class ExerciseManager {
                     System.out.println("Invalid input, try again!");
                     break;
             }
-            if (workoutToday.isEmpty()) {
-                System.out.println("No workout remaining for today. Returning...");
+
+            if (!workoutToday.isEmpty()) {
+                showingListWorkout(workoutToday, today);
+            } else {
+                System.out.println("No workout remaining for day" + today + ". Returning...");
                 break;
             }
         }
@@ -116,16 +120,16 @@ public class ExerciseManager {
             System.out.println("No exercises in the workout plan.");
         } else {
             System.out.println("Your workout plan:");
-            printExerciseRecursive(0);
+            LinkedList<Integer> printedIDs = new LinkedList<>();
+            int index = 1;
+            for (Exercise ex : logUser.getExerciseList()) {
+                if (!printedIDs.contains(ex.getID())) {
+                    System.out.println(index + ". " + ex.getName() + " [" + ex.getIntensityCategory() + "]");
+                    printedIDs.add(ex.getID());
+                    index++;
+                }
+            }
         }
         System.out.println();
-    }
-
-    private void printExerciseRecursive(int index) {
-        if (index >= logUser.getExerciseList().size()) {
-            return;
-        }
-        System.out.println((index + 1) + ". " + logUser.getExerciseList().get(index).getName()+" ["+logUser.getExerciseList().get(index).getIntensityCategory()+"]");
-        printExerciseRecursive(index + 1);
     }
 }
