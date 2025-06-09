@@ -6,6 +6,7 @@ import Class.ExerciseMove.Exercise;
 import Class.UsersAccount.Account;
 import Class.UsersAccount.Admin;
 import Class.UsersAccount.Users;
+import Class.Workout.WorkoutCalender;
 import Class.Workout.WorkoutPlan;
 
 public class Main {
@@ -39,7 +40,7 @@ public class Main {
         listExercisesTemp.add(listExercises.get(3));
         listExercisesTemp.add(listExercises.get(4));
         workoutPlanTemp = new WorkoutPlan[7];
-        workoutPlanTemp[0] = new WorkoutPlan(listExercisesTemp, 0);
+        workoutPlanTemp[1] = new WorkoutPlan(listExercisesTemp);
         listAccounts.add(new Users("Salam", "1234", "Abdus Salam", 15, "Male", 160, 70, false, workoutPlanTemp));
 
         systemLogin = new LoginRegister(listAccounts, listExercises);
@@ -47,6 +48,10 @@ public class Main {
 
     public void openingMenu() {
         while (true) {
+            WorkoutCalender c = new WorkoutCalender();
+            c.setDate(null);
+            System.out.println(c.getDayOfWeek());
+            System.out.println(c.getDay());          
             int choice = 0;
             boolean isValid = false;
             while (!isValid) {

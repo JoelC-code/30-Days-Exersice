@@ -42,16 +42,15 @@ public class ExerciseManager {
     }
 
     public void showingListWorkout(WorkoutPlan selectedDay, int day) {
-        if (selectedDay == null) {
+        if (selectedDay == null || selectedDay.isEmpty()) {
             System.out.println("There's no workout planned in day " + day + "!");
-        }
-        else{
-        System.out.println("Exercise on day " + day);
-        int arraySize = selectedDay.sizeList();
-        for (int i = 0; i < arraySize; i++) {
-            Exercise selectedExercise = selectedDay.getExerciseAt(i);
-            System.out.println((1 + i) + ". " + selectedExercise.getName());
-        }
+        } else {
+            System.out.println("Exercise on day " + day);
+            int arraySize = selectedDay.sizeList();
+            for (int i = 0; i < arraySize; i++) {
+                Exercise selectedExercise = selectedDay.getExerciseAt(i);
+                System.out.println((1 + i) + ". " + selectedExercise.getName());
+            }
         }
     }
 
@@ -60,7 +59,37 @@ public class ExerciseManager {
         wc.setDate(null);
         int today = wc.getDay();
         System.out.println(today);
-        showingListWorkout(logUser.returnExerciseBasedOnDay(today), today);
+        WorkoutPlan workoutToday = logUser.getWorkoutToday();
+
+        int options = -1;
+        while (options != 0) {
+            System.out.println();
+            showingListWorkout(workoutToday, today);
+            System.out.println("Apa yang ingin anda lakukan hari ini?");
+            System.out.println("1. Melakukan work-out");
+            System.out.println("2. Beristirahat untuk hari ini");
+            System.out.println("0. Kembali");
+            System.out.print("> ");
+            options = scan.nextInt();
+
+            switch (options) {
+                case 0:
+                    System.out.println("Kembali...");
+                    break;
+
+                case 1:
+                    workoutToday.deleteWorkout();
+                    break;
+
+                case 2:
+                    workoutToday.deleteAll();
+                    break;
+
+                default:
+                    System.out.println("Invalid input, try again!");
+                    break;
+            }
+        }
     }
 
     public void viewAllExercise() {
