@@ -9,7 +9,7 @@ D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Contro
 D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\Admin\AdminSystem.java
 D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\MainMenu\LoginRegister.java
 D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\MainMenu\Main.java
-D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\MainMenu\StartApp.java
+D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\MainMenu\Start.java
 D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\User\ExerciseManager.java
 D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\User\Questionnaire.java
 D:\Kuliah\Semester2\Java\ALP0\TEST1\30-Days-Exersice\30_days_exercise\src\Controller\User\UserPage.java
