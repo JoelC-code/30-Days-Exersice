@@ -1,2 +1,2 @@
-java -jar MyProgram.jar
+java -jar app.jar
 pause
