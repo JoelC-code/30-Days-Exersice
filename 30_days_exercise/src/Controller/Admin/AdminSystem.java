@@ -198,7 +198,7 @@ public class AdminSystem {
                 if (updateRep < 0) {
                     System.out.println("Invalid reps time, try again!");
                 } else if (updateRep > 0 && updateRep <= 20) {
-                    edittedExercise.setSecondsExercise(updateRep);
+                    edittedExercise.setRepExercise(updateRep);
                 } else if (updateRep > 20) {
                     System.out.println("Invalid rep (max is 20)");
                 }
@@ -215,7 +215,7 @@ public class AdminSystem {
                 if (updateSet < 0) {
                     System.out.println("Invalid reps time, try again!");
                 } else if (updateSet > 0) {
-                    edittedExercise.setRepExercise(updateSet);
+                    edittedExercise.setSetExercise(updateSet);
                 } else if (updateSet > 10) {
                     System.out.println("Invalid set setting, try again! (max is 10)");
                 }
