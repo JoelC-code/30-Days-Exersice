@@ -36,15 +36,7 @@ public class Users extends Account {
         this.listExercises = getExerciseList();
         this.totalOlahraga = listExercises.size();
         int today = calendar.getDayOfWeek();
-        if (workoutPlans[today] != null && workoutPlans[today].getExerciseList() != null) {
-            LinkedList<Exercise> copiedList = new LinkedList<>();
-            for (Exercise e : workoutPlans[today].getExerciseList()) {
-                copiedList.add(new Exercise(e));
-            }
-            this.workoutToday = new WorkoutPlan(copiedList);
-        } else {
-            this.workoutToday = new WorkoutPlan(null);
-        }
+        updateWorkoutToday(today);
     }
 
     public Users(String username, String password) {
@@ -105,6 +97,18 @@ public class Users extends Account {
 
     public void setRoleName(String roleName) {
         this.roleName = "User";
+    }
+
+    public void updateWorkoutToday(int today) {
+        if (workoutPlans != null && workoutPlans[today] != null && workoutPlans[today].getExerciseList() != null) {
+            LinkedList<Exercise> copiedList = new LinkedList<>();
+            for (Exercise e : workoutPlans[today].getExerciseList()) {
+                copiedList.add(new Exercise(e));
+            }
+            this.workoutToday = new WorkoutPlan(copiedList);
+        } else {
+            this.workoutToday = new WorkoutPlan(null);
+        }
     }
 
     public String getRoleName() {
@@ -174,18 +178,31 @@ public class Users extends Account {
                     .println("Error: Not enough exercise variety. Need at least one of each: Light, Moderate, Heavy.");
             return;
         }
+
         for (int i = 0; i < 7; i++) {
             WorkoutPlan plan = new WorkoutPlan(totalExercise);
             LinkedList<Exercise> used = new LinkedList<>();
-            Exercise l = lightList.get(rand.nextInt(lightList.size()));
-            Exercise m = moderateList.get(rand.nextInt(moderateList.size()));
-            Exercise h = heavyList.get(rand.nextInt(heavyList.size()));
+
+            Exercise l, m, h;
+
+            do {
+                l = lightList.get(rand.nextInt(lightList.size()));
+            } while (used.contains(l));
             plan.addWorkout(l);
             used.add(l);
+
+            do {
+                m = moderateList.get(rand.nextInt(moderateList.size()));
+            } while (used.contains(m));
             plan.addWorkout(m);
             used.add(m);
+
+            do {
+                h = heavyList.get(rand.nextInt(heavyList.size()));
+            } while (used.contains(h));
             plan.addWorkout(h);
             used.add(h);
+
             while (plan.sizeList() < totalExercise) {
                 Exercise selected = allExercises.get(rand.nextInt(allExercises.size()));
                 boolean duplicate = false;
@@ -199,11 +216,15 @@ public class Users extends Account {
                     plan.addWorkout(selected);
                     used.add(selected);
                 }
-                if (used.size() == allExercises.size())
+
+                if (used.size() >= allExercises.size())
                     break;
             }
+
             workoutPlans[i] = plan;
         }
+        calendar.setDate(null);
+        updateWorkoutToday(calendar.getDayOfWeek());
     }
 
     public WorkoutPlan returnExerciseBasedOnDay(int selectedDay) {
