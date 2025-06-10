@@ -135,7 +135,7 @@ public class AdminSystem {
         Exercise edittedExercise = listExercise.get(exerciseSelected - 1);
         while (!isValid) {
             try {
-                System.out.print("Name for update (leave empty if no changes wanted): ");
+                System.out.print("Name for update (): ");
                 updateName = scan.nextLine().trim();
                 if (!updateName.isEmpty()) {
                     edittedExercise.setName(updateName);
@@ -148,7 +148,7 @@ public class AdminSystem {
         isValid = false;
         while (!isValid) {
             try {
-                System.out.print("Desc for update (leave empty if no changes wanted): ");
+                System.out.print("Desc for update: ");
                 updateDesc = scan.nextLine().trim();
                 if (!updateDesc.isEmpty()) {
                     edittedExercise.setDescription(updateDesc);
@@ -161,7 +161,7 @@ public class AdminSystem {
         isValid = false;
         while (!isValid) {
             try {
-                System.out.print("Base Calorie for update (leave empty if no changes wanted): ");
+                System.out.print("Base Calorie for update: ");
                 updateCal = scan.nextDouble();
                 if (updateCal < 0) {
                     System.out.println("Invalid Calorie base, try again!");
@@ -176,7 +176,7 @@ public class AdminSystem {
         isValid = false;
         while (!isValid) {
             try {
-                System.out.print("Time for update (leave empty if no changes wanted and max 300): ");
+                System.out.print("Time for update (max 300): ");
                 updateTime = scan.nextInt();
                 if (updateTime < 0) {
                     System.out.println("Invalid time, try again!");
@@ -193,7 +193,7 @@ public class AdminSystem {
         isValid = false;
         while (!isValid) {
             try {
-                System.out.print("Reps for update (leave empty if no changes wanted & max is 20): ");
+                System.out.print("Reps for update (max is 20): ");
                 updateRep = scan.nextInt();
                 if (updateRep < 0) {
                     System.out.println("Invalid reps time, try again!");
@@ -210,7 +210,7 @@ public class AdminSystem {
         isValid = false;
         while (!isValid) {
             try {
-                System.out.print("Sets for update (leave empty if no changes wanted & max is 10): ");
+                System.out.print("Sets for update (max is 10): ");
                 updateSet = scan.nextInt();
                 if (updateSet < 0) {
                     System.out.println("Invalid reps time, try again!");
