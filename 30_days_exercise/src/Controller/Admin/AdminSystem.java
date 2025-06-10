@@ -53,13 +53,13 @@ public class AdminSystem {
                 scan.nextLine();
                 if (baseCalorieBurned <= 0) {
                     System.out.println("You cannot burn 0 or below calorie");
-                } else if (baseCalorieBurned > 25) {
+                } else if (baseCalorieBurned > 30) {
                     System.out.println("Burned calorie max is 30 Kcal");
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again [AE-1]");
             }
-        } while (baseCalorieBurned <= 0 && baseCalorieBurned > 25);
+        } while (baseCalorieBurned <= 0 || baseCalorieBurned > 30);
 
         do {
             try {
@@ -74,7 +74,7 @@ public class AdminSystem {
             } catch (Exception e) {
                 System.out.println("Invalid input, try again [AE-2]");
             }
-        } while (repExercise <= 0 && repExercise > 20);
+        } while (repExercise <= 0 || repExercise > 20);
 
         do {
             try {
@@ -89,7 +89,7 @@ public class AdminSystem {
             } catch (Exception e) {
                 System.out.println("Invalid input, try again [AE-3]");
             }
-        } while (setExercise <= 0 && setExercise > 10);
+        } while (setExercise <= 0 || setExercise > 10);
         do {
             try {
                 System.out.print("Time needed to done (seconds): ");
@@ -103,7 +103,7 @@ public class AdminSystem {
             } catch (Exception e) {
                 System.out.println("Invalid input, try again [AE-4]");
             }
-        } while (secondsExercise <= 0 && secondsExercise > 300);
+        } while (secondsExercise <= 0 || secondsExercise > 300);
         totalCalorieBurned = repExercise * setExercise * baseCalorieBurned;
         listExercise.add(new Exercise(nameExercise, totalCalorieBurned, repExercise, setExercise, secondsExercise, descExercise));
     }
@@ -165,7 +165,7 @@ public class AdminSystem {
                 updateCal = scan.nextDouble();
                 if (updateCal < 0) {
                     System.out.println("Invalid Calorie base, try again!");
-                } else if (updateCal > 25) {
+                } else if (updateCal > 30) {
                     System.out.println("Burned calorie max is 30 Kcal");
                 }
                 isValid = true;
